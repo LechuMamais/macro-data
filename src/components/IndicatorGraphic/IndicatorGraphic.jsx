@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./IndicatorGraphic.css";
 import React from "react";
+import { indicatorCodes } from "../../utils/indicatorCodes";
 
 const IndicatorGraphic = ({ indicator }) => {
   // Primero que todo verificar si hay datos disponibles
@@ -12,18 +13,20 @@ const IndicatorGraphic = ({ indicator }) => {
   // Invertir los datos para que muestre los años en orden ascendete
   const reversedData = [...indicator.data].reverse();
 
+  // Unidad de medida
+  const unit = indicatorCodes.find(
+    (i) => i.code === indicator.indicator.code
+  ).measurement;
+  console.log(unit);
+
   // Variables que necesitamos modificar durante la vida del componente
-  const [dateHover, setDateHover] = useState('');
-  const [valueHover, setValueHover] = useState('');
+  const [dateHover, setDateHover] = useState("");
+  const [valueHover, setValueHover] = useState("");
 
   // Funciones para manejar los eventos del raton sobre los graficos
   const handleMouseOver = (date, value) => {
     setDateHover(date);
     setValueHover(value);
-  };
-  const handleMouseOut = () => {
-    setDateHover('');
-    setValueHover('');
   };
 
   // Obtenemos los valores minimos y maximos de date y value, para los ejes de los graficos
@@ -46,7 +49,7 @@ const IndicatorGraphic = ({ indicator }) => {
     <div className="indicatorGraphicContainer">
       <div className="mouse-hover-bar-info">
         <p>Año: {dateHover}</p>
-        <p>Valor: {valueHover?valueHover:'Sin datos'}</p>
+        <p>Valor: {valueHover ? valueHover + " " + unit : "Sin datos"}</p>
       </div>
       <p id="maxValue">{maxValue}</p>
       <p id="minValue">{minValue}</p>
@@ -64,7 +67,7 @@ const IndicatorGraphic = ({ indicator }) => {
               width: `${100 / indicator.data.length}%`,
             }}
             onMouseOver={() => handleMouseOver(item.date, item.value)}
-            onMouseOut={handleMouseOut}          >
+          >
             <div
               className="graphic-bar"
               id={item.date}
