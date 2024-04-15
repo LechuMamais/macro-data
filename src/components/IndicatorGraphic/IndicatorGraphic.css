@@ -1,0 +1,81 @@
+.indicatorGraphicContainer {
+    height: 500px;
+    width: 90vw;
+    background-color: beige;
+    display: grid;
+    grid-template-columns: 5% 95%;
+    grid-template-rows: 5% 85% 5%;
+    grid-template-areas:
+        "bar-info bar-info"
+        "max-value indicatorGraphic"
+        "min-value indicatorGraphic"
+        "empty-space datesContainer";
+}
+
+.mouse-hover-bar-info {
+    grid-area: bar-info;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30%;
+}
+
+#maxValue {
+    grid-area: max-value;
+}
+
+#minValue {
+    text-align: end;
+    grid-area: min-value;
+}
+
+#datesContainer {
+    grid-area: datesContainer;
+    display: flex;
+    justify-content: space-between;
+}
+
+#empty-space {
+    grid-area: empty-space;
+}
+
+.indicatorGraphic {
+    grid-area: indicatorGraphic;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.indicatorGraphic {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+/*=========================================================================================================================*/
+
+.graphic-bar-container {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    cursor: pointer;
+}
+
+.graphic-bar {
+    width: 100%;
+    background-color: rgb(0, 154, 197);
+    transition: all 290ms ease-out;
+}
+
+.graphic-bar-container:hover {
+    .graphic-bar {
+        background-color: rgb(7, 134, 169);
+        -webkit-box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/*=========================================================================================================================*/
