@@ -1,5 +1,16 @@
+.indicator-select-container{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
 .indicator-name{
     font-weight: 400;
     font-size: 22px;
+    padding: 0.5rem 1rem;
+}
+.indicator-code{
+    font-weight: 400;
+    font-size: 18px;
     padding: 0.5rem 1rem;
 }

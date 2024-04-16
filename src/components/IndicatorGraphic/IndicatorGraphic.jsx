@@ -4,10 +4,10 @@ import GraphicBar from "../GraphicBar/GraphicBar";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { indicatorCodes } from "../../utils/indicatorCodes";
 
-const IndicatorGraphic = ({ indicator }) => {
+const IndicatorGraphic = ({ countryIndicatorData }) => {
   const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
 
-  if (!indicator || !indicator.data || indicator.data.length === 0) {
+  if (!countryIndicatorData || countryIndicatorData[1].length === 0) {
     return (
       <div className="indicatorGraphicContainer">No hay datos disponibles.</div>
     );
@@ -15,11 +15,11 @@ const IndicatorGraphic = ({ indicator }) => {
 
   // Unidad de medida
   const unit = indicatorCodes.find(
-    (i) => i.code === indicator.indicator.code
+    (i) => i.code === countryIndicatorData[1][0].indicator.id
   ).measurement;
 
   //Damos vuelta los datos, porque vienen en orden descentente en fecha
-  const reversedData = [...indicator.data].reverse();
+  const reversedData = [...countryIndicatorData[1]].reverse();
   //Creamos arrays de fechas y valores
   const dates = reversedData.map((item) => item.date);
   const values = reversedData.map((item) => item.value);

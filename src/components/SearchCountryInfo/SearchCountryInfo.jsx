@@ -1,18 +1,27 @@
 import "./SearchCountryInfo.css";
 import React, { useState } from "react";
-import { getCountryData } from "../../utils/getCountryData";
+import { getCountryData, getIndicatorData } from "../../utils/getCountryData";
 import CountrySearchInput from "../CountrySearchInput/CountrySearchInput";
 import CountryInfo from "../CountryInfo/CountryInfo";
+import IndicatorList from "../IndicatorsList/IndicatorsList";
 
 const SearchCountryInfo = () => {
-  const [countryData, setCountryData] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedIndicator, setSelectedIndicator] = useState(null);
+  const [countryIndicatorData, setCountryIndicatorData] = useState(null);
 
   const handleCountrySelect = async (selectedCountry) => {
-    const countryCode = selectedCountry.Code;
-    console.log(countryCode);
-    const data = await getCountryData(countryCode);
-    console.log("Datos del país seleccionado:", data);
-    setCountryData(data);
+    setSelectedCountry(selectedCountry);
+    //setSelectedIndicator(null); // Reiniciar el indicador seleccionado al cambiar de país
+    //setCountryData(null); // Reiniciar la información del país al cambiar de país
+  };
+
+  const handleIndicatorSelect = async (selectedIndicator) => {
+    setSelectedIndicator(selectedIndicator);
+    // Realizar la petición con el indicador seleccionado y el país
+    const data = await getIndicatorData(selectedCountry.Code, selectedIndicator);
+    console.log(data)
+    setCountryIndicatorData(data);
   };
 
   return (
@@ -21,7 +30,12 @@ const SearchCountryInfo = () => {
         <h2>Información por países</h2>
         <CountrySearchInput onCountrySelect={handleCountrySelect} />
       </div>
-      {countryData && <CountryInfo countryData={countryData} />}
+      <h4>{selectedIndicator?selectedIndicator:'Selecciona un indicador'}</h4>
+        <IndicatorList
+          onIndicatorSelect={handleIndicatorSelect}
+        />
+ 
+      {countryIndicatorData && <CountryInfo countryIndicatorData={countryIndicatorData} />}
     </>
   );
 };
