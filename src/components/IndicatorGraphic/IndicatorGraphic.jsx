@@ -3,11 +3,18 @@ import "./IndicatorGraphic.css";
 import GraphicBar from "../GraphicBar/GraphicBar";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { indicatorCodes } from "../../utils/indicatorCodes";
+import { useEffect } from "react";
 
 const IndicatorGraphic = ({ countryIndicatorData }) => {
   const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
 
-  if (!countryIndicatorData || countryIndicatorData[1].length === 0) {
+  useEffect(() => {
+    if (!countryIndicatorData || !Array.isArray(countryIndicatorData[1]) || countryIndicatorData[1].length === 0) {
+      console.error("No hay countryIndicatorData válido");
+    }
+  }, [countryIndicatorData]);
+
+  if (!countryIndicatorData || !Array.isArray(countryIndicatorData[1]) || countryIndicatorData[1].length === 0) {
     return (
       <div className="indicatorGraphicContainer">No hay datos disponibles.</div>
     );
@@ -16,7 +23,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
   // Unidad de medida
   const unit = indicatorCodes.find(
     (i) => i.code === countryIndicatorData[1][0].indicator.id
-  ).measurement;
+  )?.measurement || "unidad_desconocida";
 
   //Damos vuelta los datos, porque vienen en orden descentente en fecha
   const reversedData = [...countryIndicatorData[1]].reverse();

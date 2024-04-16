@@ -1,59 +1,51 @@
-import "./SearchCountryInfo.css";
+import './SearchCountryInfo.css';
+
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import CountrySearchInput from "../CountrySearchInput/CountrySearchInput";
 import CountryInfo from "../CountryInfo/CountryInfo";
-import IndicatorList from "../IndicatorsList/IndicatorsList";
-import { indicatorCodes } from "../../utils/indicatorCodes";
+import IndicatorsList from "../IndicatorsList/IndicatorsList";
 
 const SearchCountryInfo = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedIndicator, setSelectedIndicator] = useState(null);
 
-  const handleCountrySelect = (selectedCountry) => {
-    setSelectedCountry(selectedCountry);
+  const handleCountrySelect = (country) => {
+    setSelectedCountry(country);
+    setSelectedIndicator(null); // Resetear el indicador seleccionado al cambiar de país
   };
 
-  const handleIndicatorSelect = (selectedIndicator) => {
-    setSelectedIndicator(selectedIndicator);
+  const handleIndicatorSelect = (indicator) => {
+    setSelectedIndicator(indicator);
   };
 
   return (
-    <>
+    <div className="search-country-info">
       <div id="searchBarContainer">
-        <h2>Información por países</h2>
-        <CountrySearchInput onCountrySelect={handleCountrySelect} />
-      </div>
-      
-      <h4>
-        {selectedIndicator ? selectedIndicator.name : "Selecciona un indicador"}
-      </h4>
-      
-      {/* Utiliza Link para la lista de indicadores */}
-      <div>
-        <h3>Selecciona un indicador:</h3>
-        <ul>
-          {indicatorCodes.map((indicator) => (
-            <li key={indicator.code}>
-              <Link
-                to={`/country/${selectedCountry?.Code}/indicator/${indicator.code}`}
-                onClick={() => handleIndicatorSelect(indicator)}
-              >
-                {indicator.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="searchBarContainer-country">
+          <h3>Selecciona un país</h3>
+          <CountrySearchInput onCountrySelect={handleCountrySelect} />
+        </div>
+
+        {/* Mostrar la lista de indicadores solo si se ha seleccionado un país */}
+        <div className="searchBarContainer-indicator">
+          <h3>Selecciona un indicador</h3>
+          {selectedCountry && (
+            <IndicatorsList
+              onSelectIndicator={handleIndicatorSelect}
+              selectedCountryCode={selectedCountry.Code}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Renderiza CountryInfo cuando se ha seleccionado un país e indicador */}
+      {/* Renderizar CountryInfo cuando se ha seleccionado un país e indicador */}
       {selectedCountry && selectedIndicator && (
         <CountryInfo
-          countryCode={selectedCountry.Code}
+          countryIso3Code={selectedCountry.Code}
           indicatorCode={selectedIndicator.code}
         />
       )}
-    </>
+    </div>
   );
 };
 

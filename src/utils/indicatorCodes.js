@@ -9,7 +9,6 @@ export const indicatorCodes = [
   { code: "SH.XPD.CHEX.GD.ZS", name: "Gasto en salud como porcentaje del PIB", measurement: '%' },
   { code: "SP.POP.TOTL", name: "Población total", measurement: 'people' },
   { code: "SH.DYN.MORT", name: "Tasa de mortalidad infantil (por cada 1,000 nacidos vivos)", measurement: '/1000' },
-  { code: "SH.STA.ACSN", name: "Acceso a servicios de saneamiento básico (% de la población)", measurement: '%' },
   { code: "SE.XPD.TOTL.GD.ZS", name: "Gasto en educación como porcentaje del PIB", measurement: '%' },
   { code: "SE.SEC.ENRL.TC.ZS", name: "Tasa bruta de matriculación en educación secundaria (% del grupo de edad correspondiente)", measurement: '%' },
   { code: "SE.PRM.ENRL.TC.ZS", name: "Tasa bruta de matriculación en educación primaria (% del grupo de edad correspondiente)", measurement: '%' },
@@ -24,6 +23,5 @@ export const indicatorCodes = [
   { code: "SG.VAW.REAS.ZS", name: "Proporción de mujeres que han sufrido violencia física o sexual por parte de una pareja íntima", measurement: '%' },
   { code: "IT.NET.USER.ZS", name: "Usuarios de Internet (% de la población)", measurement: '%'  },
   { code: "IS.AIR.PSGR", name: "Pasajeros transportados por vía aérea", measurement: 'people'  },
-  { code: "IS.ROD.PAVE.ZS", name: "Porcentaje de carreteras pavimentadas", measurement: '%' },
   { code: "IT.CEL.SETS.P2", name: "Suscripciones a telefonía celular (por cada 100 personas)", measurement: 'x100 people' }
 ];

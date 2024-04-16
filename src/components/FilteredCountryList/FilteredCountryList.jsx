@@ -3,7 +3,7 @@ import React from 'react';
 
 const FilteredCountryList = ({ countries, onCountryClick }) => {
   return (
-    <ul id='FilteredCountriesList'>
+    <ul className='select-list' id='FilteredCountriesList'>
       {countries.map((country) => (
         <li
           key={country.Name}
