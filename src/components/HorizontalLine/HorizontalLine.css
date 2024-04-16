@@ -1,0 +1,13 @@
+.graphic-horizontal-line{
+    width: 2000%;
+    height: 22.5px;
+    border-bottom: 1px dashed black;
+    transition: all 390ms ease-out;
+    position: relative;
+    top: -10px;
+    left:0%;
+}
+.graphic-horizontal-line p{
+    margin-left: 5%;
+    font-size: 14px;
+}

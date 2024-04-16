@@ -1,0 +1,23 @@
+.graphic-bar-container {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    cursor: pointer;
+    width: 100%;
+}
+
+.graphic-bar {
+    width: 100%;
+    background-color: rgb(0, 154, 197);
+    transition: all 290ms ease-out;
+}
+
+.graphic-bar-container:hover {
+    .graphic-bar {
+        background-color: rgb(7, 134, 169);
+        -webkit-box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0px 0px 28px -12px rgba(0, 0, 0, 0.5);
+    }
+}

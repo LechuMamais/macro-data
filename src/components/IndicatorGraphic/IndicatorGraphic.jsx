@@ -1,4 +1,82 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./IndicatorGraphic.css";
+import GraphicBar from "../GraphicBar/GraphicBar";
+import HorizontalLine from "../HorizontalLine/HorizontalLine";
+import { indicatorCodes } from "../../utils/indicatorCodes";
+
+
+const IndicatorGraphic = ({ indicator }) => {
+  const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
+
+  if (!indicator || !indicator.data || indicator.data.length === 0) {
+    return <div className="indicatorGraphicContainer">No hay datos disponibles.</div>;
+  }
+
+    // Unidad de medida
+    const unit = indicatorCodes.find(
+      (i) => i.code === indicator.indicator.code
+    ).measurement;
+
+  const reversedData = [...indicator.data].reverse();
+  const dates = reversedData.map((item) => item.date);
+  const values = reversedData.map((item) => item.value);
+
+  const maxDate = Math.max(...dates);
+  const minDate = Math.min(...dates);
+  const maxValue = Math.max(...values);
+  const minValue = Math.min(...values);
+
+  const handleMouseOver = (date, value) => {
+    setHoverInfo({ date, value });
+  };
+
+  return (
+    <div className="indicatorGraphicContainer">
+      <div className="mouse-hover-bar-info">
+        <p>Año: {hoverInfo.date}</p>
+        <p>Valor: {hoverInfo.value ? hoverInfo.value.toFixed(2) + " " + unit : "Sin datos"}</p>
+      </div>
+      <p id="maxValue">{maxValue.toFixed(2)}</p>
+      <p id="minValue">{minValue.toFixed(2)}</p>
+      <p id="empty-space"></p>
+      <div id="datesContainer">
+        <p id="minDate">{minDate}</p>
+        <p id="maxDate">{maxDate}</p>
+      </div>
+      <div className="indicatorGraphic">
+        {reversedData.map((item) => (
+          <GraphicBar
+            key={item.date}
+            date={item.date}
+            value={item.value}
+            maxValue={maxValue}
+            minValue={minValue}
+            onMouseOver={handleMouseOver}
+          />
+        ))}
+      </div>
+      <HorizontalLine
+        top={(449 * (hoverInfo.value / maxValue) + 43.5) * -1 + "px"}
+        valueHover={hoverInfo.value}
+        unit={unit}
+      />
+    </div>
+  );
+};
+
+export default IndicatorGraphic;
+
+
+
+
+
+
+
+
+
+
+
+/*import { useState } from "react";
 import "./IndicatorGraphic.css";
 import React from "react";
 import { indicatorCodes } from "../../utils/indicatorCodes";
@@ -25,8 +103,11 @@ const IndicatorGraphic = ({ indicator }) => {
 
   // Funciones para manejar los eventos del raton sobre los graficos
   const handleMouseOver = (date, value) => {
-    setDateHover(date);
-    setValueHover(value);
+    setTimeout(() => {
+      // El proposito de este setTimeout es luego hacer que la linea solo se mueva si pasó un poquito de tiempo sobre una misma barra, diferente de esta
+      setDateHover(date);
+      setValueHover(value);
+    }, 200);
   };
 
   // Obtenemos los valores minimos y maximos de date y value, para los ejes de los graficos
@@ -45,14 +126,22 @@ const IndicatorGraphic = ({ indicator }) => {
     return height + "%";
   };
 
+  // Función para calcular la altura de la linea en función del valor
+  // Hay que hacerle un ajuste para los casos en donde minHeight sea menor a 0, porque se rompe
+  const heightLineCalculator = (value) => {
+    const height = 449 * (value / maxValue) + 43.5;
+    console.log(height + "px");
+    return "-" + height + "px";
+  };
+
   return (
     <div className="indicatorGraphicContainer">
       <div className="mouse-hover-bar-info">
         <p>Año: {dateHover}</p>
         <p>Valor: {valueHover ? valueHover + " " + unit : "Sin datos"}</p>
       </div>
-      <p id="maxValue">{maxValue}</p>
-      <p id="minValue">{minValue}</p>
+      <p id="maxValue">{maxValue.toFixed(2)}</p>
+      <p id="minValue">{minValue.toFixed(2)}</p>
       <p id="empty-space"></p>
       <div id="datesContainer">
         <p id="minDate">{minDate}</p>
@@ -78,8 +167,18 @@ const IndicatorGraphic = ({ indicator }) => {
           </div>
         ))}
       </div>
+      {
+        <div
+          className="graphic-horizontal-line"
+          style={{
+            top: `${heightLineCalculator(valueHover)}`,
+          }}
+        >
+          <p>{valueHover ? valueHover + " " + unit : "Sin datos"}</p>
+        </div>
+      }
     </div>
   );
 };
 
-export default IndicatorGraphic;
+export default IndicatorGraphic;*/
