@@ -1,27 +1,21 @@
 import "./SearchCountryInfo.css";
 import React, { useState } from "react";
-import { getCountryData, getIndicatorData } from "../../utils/getCountryData";
+import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import CountrySearchInput from "../CountrySearchInput/CountrySearchInput";
 import CountryInfo from "../CountryInfo/CountryInfo";
 import IndicatorList from "../IndicatorsList/IndicatorsList";
+import { indicatorCodes } from "../../utils/indicatorCodes";
 
 const SearchCountryInfo = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedIndicator, setSelectedIndicator] = useState(null);
-  const [countryIndicatorData, setCountryIndicatorData] = useState(null);
 
-  const handleCountrySelect = async (selectedCountry) => {
+  const handleCountrySelect = (selectedCountry) => {
     setSelectedCountry(selectedCountry);
-    //setSelectedIndicator(null); // Reiniciar el indicador seleccionado al cambiar de país
-    //setCountryData(null); // Reiniciar la información del país al cambiar de país
   };
 
-  const handleIndicatorSelect = async (selectedIndicator) => {
+  const handleIndicatorSelect = (selectedIndicator) => {
     setSelectedIndicator(selectedIndicator);
-    // Realizar la petición con el indicador seleccionado y el país
-    const data = await getIndicatorData(selectedCountry.Code, selectedIndicator);
-    console.log(data)
-    setCountryIndicatorData(data);
   };
 
   return (
@@ -30,12 +24,35 @@ const SearchCountryInfo = () => {
         <h2>Información por países</h2>
         <CountrySearchInput onCountrySelect={handleCountrySelect} />
       </div>
-      <h4>{selectedIndicator?selectedIndicator:'Selecciona un indicador'}</h4>
-        <IndicatorList
-          onIndicatorSelect={handleIndicatorSelect}
+      
+      <h4>
+        {selectedIndicator ? selectedIndicator.name : "Selecciona un indicador"}
+      </h4>
+      
+      {/* Utiliza Link para la lista de indicadores */}
+      <div>
+        <h3>Selecciona un indicador:</h3>
+        <ul>
+          {indicatorCodes.map((indicator) => (
+            <li key={indicator.code}>
+              <Link
+                to={`/country/${selectedCountry?.Code}/indicator/${indicator.code}`}
+                onClick={() => handleIndicatorSelect(indicator)}
+              >
+                {indicator.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Renderiza CountryInfo cuando se ha seleccionado un país e indicador */}
+      {selectedCountry && selectedIndicator && (
+        <CountryInfo
+          countryCode={selectedCountry.Code}
+          indicatorCode={selectedIndicator.code}
         />
- 
-      {countryIndicatorData && <CountryInfo countryIndicatorData={countryIndicatorData} />}
+      )}
     </>
   );
 };

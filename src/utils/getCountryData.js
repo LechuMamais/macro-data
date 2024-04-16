@@ -26,12 +26,15 @@ export const getIndicatorData = async (countryCode, indicatorCode) => {
   const baseUrl = "https://api.worldbank.org/v2/country";
   const url = `${baseUrl}/${countryCode}/indicator/${indicatorCode}?format=json`;
 
+  console.log('Requesting URL:', url); // Verificar la URL generada
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Error en la solicitud");
     }
     const responseData = await response.json();
+    console.log(responseData);
 
     return responseData;
   } catch (error) {
