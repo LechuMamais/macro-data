@@ -1,0 +1,11 @@
+#SelectedCountryName{
+    /*padding:0 1rem;*/
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: center;
+}
+#countryName{
+    font-size: 30px;
+    font-weight: 400;
+}

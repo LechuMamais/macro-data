@@ -9,12 +9,12 @@ import RouteNotFound from "./components/RouteNotFound/RouteNotFound";
 function App() {
   return (
       <div className="Aplicacion">
-        <Header />
+        {/*<Header />*/}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<RouteNotFound />} />
         </Routes>
-        <Footer/>
+        {/*<Footer/>*/}
       </div>
   );
 }

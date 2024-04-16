@@ -1,0 +1,18 @@
+#searchBarContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    /*box-shadow: 0px -1px 111px -35px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px -1px 111px -35px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px -1px 111px -35px rgba(0, 0, 0, 0.75);*/
+}
+
+#searchBarContainer h2 {
+    font-weight: 400;
+    font-size: 20px;
+}

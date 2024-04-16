@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 400;
+    font-size: 32px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}

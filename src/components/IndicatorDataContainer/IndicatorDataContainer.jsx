@@ -1,4 +1,3 @@
-import IndicatorData from "../IndicatorData/IndicatorData";
 import IndicatorGraphic from "../IndicatorGraphic/IndicatorGraphic";
 import "./IndicatorDataContainer.css";
 import React from "react";
@@ -6,7 +5,7 @@ import React from "react";
 const IndicatorDataContainer = ({ indicator }) => {
   return (
     <>
-      <strong>{indicator.indicator.name}</strong>
+      <h3 className="indicator-name">{indicator.indicator.name}</h3>
       <div>
         <IndicatorGraphic indicator={indicator} /> 
       </div>

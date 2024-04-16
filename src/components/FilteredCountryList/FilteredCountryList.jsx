@@ -3,12 +3,12 @@ import React from 'react';
 
 const FilteredCountryList = ({ countries, onCountryClick }) => {
   return (
-    <ul>
+    <ul id='FilteredCountriesList'>
       {countries.map((country) => (
         <li
           key={country.Name}
+          className='country-name-li'
           onClick={() => onCountryClick(country)}
-          style={{ cursor: 'pointer' }}
         >
           {country.Name}
         </li>

@@ -4,37 +4,49 @@ import GraphicBar from "../GraphicBar/GraphicBar";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { indicatorCodes } from "../../utils/indicatorCodes";
 
-
 const IndicatorGraphic = ({ indicator }) => {
   const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
 
   if (!indicator || !indicator.data || indicator.data.length === 0) {
-    return <div className="indicatorGraphicContainer">No hay datos disponibles.</div>;
+    return (
+      <div className="indicatorGraphicContainer">No hay datos disponibles.</div>
+    );
   }
 
-    // Unidad de medida
-    const unit = indicatorCodes.find(
-      (i) => i.code === indicator.indicator.code
-    ).measurement;
+  // Unidad de medida
+  const unit = indicatorCodes.find(
+    (i) => i.code === indicator.indicator.code
+  ).measurement;
 
+  //Damos vuelta los datos, porque vienen en orden descentente en fecha
   const reversedData = [...indicator.data].reverse();
+  //Creamos arrays de fechas y valores
   const dates = reversedData.map((item) => item.date);
   const values = reversedData.map((item) => item.value);
 
+  // Obtenemos el máximo y mínimo de los valores
   const maxDate = Math.max(...dates);
   const minDate = Math.min(...dates);
   const maxValue = Math.max(...values);
   const minValue = Math.min(...values);
 
+  // Manejar el hover, setea el hover info 
   const handleMouseOver = (date, value) => {
-    setHoverInfo({ date, value });
+    setTimeout(() => {
+      setHoverInfo({ date, value });
+    }, 200);
   };
 
   return (
     <div className="indicatorGraphicContainer">
       <div className="mouse-hover-bar-info">
         <p>Año: {hoverInfo.date}</p>
-        <p>Valor: {hoverInfo.value ? hoverInfo.value.toFixed(2) + " " + unit : "Sin datos"}</p>
+        <p>
+          Valor:{" "}
+          {hoverInfo.value
+            ? hoverInfo.value.toFixed(2) + " " + unit
+            : "Sin datos"}
+        </p>
       </div>
       <p id="maxValue">{maxValue.toFixed(2)}</p>
       <p id="minValue">{minValue.toFixed(2)}</p>
@@ -66,15 +78,7 @@ const IndicatorGraphic = ({ indicator }) => {
 
 export default IndicatorGraphic;
 
-
-
-
-
-
-
-
-
-
+/*====================================================================================================================================================*/
 
 /*import { useState } from "react";
 import "./IndicatorGraphic.css";

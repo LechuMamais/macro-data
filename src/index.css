@@ -1,5 +1,117 @@
+/*===========================================================================================================================================*/
+.barlow-thin {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.barlow-thin-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.barlow-extralight {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.barlow-extralight-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.barlow-light {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.barlow-light-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.barlow-regular {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-regular-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.barlow-medium {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.barlow-medium-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.barlow-semibold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.barlow-semibold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.barlow-bold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.barlow-bold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.barlow-extrabold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.barlow-extrabold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.barlow-black {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.barlow-black-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/*===========================================================================================================================================*/
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Barlow, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,4 +125,36 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+}
+
+
+/*===========================================================================================================================================*/
+
+
+input[type="text"] {
+  /* Establecer que el input ocupe todo el ancho disponible */
+  width: 100%;
+  max-width: 200px;
+  
+  /* Quitar el borde en todos los estados */
+  border: none;
+  outline: none; /* Eliminar el contorno al enfocar */
+  
+  /* Otros estilos opcionales */
+  padding: 8px; /* Añadir relleno interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 4px; /* Añadir esquinas redondeadas (opcional) */
+   /* Color de fondo (opcional) */
+  color: #333; /* Color de texto (opcional) */
+}
+
+input[type="text"]:hover {
+  /* Estilos al pasar el mouse (opcional) */
+  /* Puedes añadir aquí estilos adicionales al pasar el mouse sobre el input */
+}
+
+input[type="text"]:focus {
+  background-color: #e8e8e8;
+  /* Estilos al enfocar (opcional) */
+  /* Puedes añadir aquí estilos adicionales al enfocar el input */
 }

@@ -1,0 +1,19 @@
+#FilteredCountriesList{
+    width: 340px;
+    position: absolute;
+    top: 115px;
+    max-height: 70vh;
+    overflow-y: scroll;
+    border-radius: 8px;
+    background-color: rgba(245, 245, 245, 0.886);
+    border: 3px solid rgba(205, 205, 205, 0.354);
+}
+.country-name-li{
+    cursor: pointer;
+    padding: 0.2rem 0.5rem ;
+    transition: all 320ms ease-in-out;
+}
+.country-name-li:hover{
+    background-color: rgb(207, 207, 207);
+
+}

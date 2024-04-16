@@ -7,7 +7,6 @@ const GraphicBar = ({ date, value, maxValue, minValue, onMouseOver }) => {
   return (
     <div
       className="graphic-bar-container"
-      style={{ height }}
       onMouseOver={() => onMouseOver(date, value)}
     >
       <div className="graphic-bar" style={{ height }}></div>

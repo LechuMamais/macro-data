@@ -1,14 +1,18 @@
-import SearchCountryInfo from '../SearchCountryInfo/SearchCountryInfo'
-import './Home.css'
-import React from 'react'
+import "./Home.css";
+import SearchCountryInfo from "../SearchCountryInfo/SearchCountryInfo";
+import React from "react";
 
 const Home = () => {
   return (
     <div>
-      <h1>Consulta Información del Banco Mundial</h1>
-      <SearchCountryInfo />
+      <header>
+        <h1>Información Macroeconómica para el Desarrollo</h1>
+      </header>
+      <main>
+        <SearchCountryInfo />
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
