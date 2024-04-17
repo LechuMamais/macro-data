@@ -1,18 +1,14 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const IndicatorLink = ({ indicator, onClick }) => {
+const IndicatorLink = ({ indicator }) => {
   const { countryIso3Code } = useParams();
 
-  const handleLinkClick = () => {
-    onClick(indicator);
-  };
 
   return (
     <li>
       <Link
-        to={`/country/${countryIso3Code}/indicator/${indicator.code}`}
-        onClick={handleLinkClick}
+        to={`/country/${countryIso3Code?countryIso3Code:'ES'}/indicator/${indicator.code}`}
       >
         {indicator.name}
       </Link>

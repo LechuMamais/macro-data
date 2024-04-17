@@ -7,15 +7,11 @@ import IndicatorsList from "../IndicatorsList/IndicatorsList";
 
 const SearchCountryInfo = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedIndicator, setSelectedIndicator] = useState(null);
 
   const handleCountrySelect = (country) => {
     setSelectedCountry(country);
   };
 
-  const handleIndicatorSelect = (indicator) => {
-    setSelectedIndicator(indicator);
-  };
 
   return (
     <div className="search-country-info">
@@ -28,21 +24,14 @@ const SearchCountryInfo = () => {
         {/* Mostrar la lista de indicadores solo si se ha seleccionado un país */}
         <div className="searchBarContainer-indicator">
           <h3>Selecciona un indicador</h3>
-          {selectedCountry && (
-            <IndicatorsList
-              onSelectIndicator={handleIndicatorSelect}
-            />
-          )}
+          <IndicatorsList/>
         </div>
       </div>
 
-      {/* Renderizar CountryInfo cuando se ha seleccionado un país e indicador */}
-      {selectedCountry && selectedIndicator && (
-        <CountryInfo
-          countryIso3Code={selectedCountry.Code}
-          indicatorCode={selectedIndicator.code}
-        />
-      )}
+      {/* Renderizar CountryInfo  */}
+
+        <CountryInfo/>
+
     </div>
   );
 };

@@ -9,15 +9,16 @@ const FilteredCountryList = ({ countries, onCountryClick }) => {
   return (
     <ul className="select-list" id="FilteredCountriesList">
       {countries.map((country) => (
-        <li
-          key={country.Name}
-          className="country-name-li"
+        <Link
+          to={`/country/${country.Code}/indicator/${
+            indicatorCode ? indicatorCode : "NY.GDP.MKTP.CD"
+          }`}
           onClick={() => onCountryClick(country)}
         >
-          <Link to={`/country/${country.Code}/indicator/${indicatorCode}`}>
+          <li key={country.Name} className="country-name-li">
             {country.Name}
-          </Link>
-        </li>
+          </li>
+        </Link>
       ))}
     </ul>
   );

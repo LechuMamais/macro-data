@@ -8,6 +8,7 @@ const CountryInfo = () => {
   const { countryIso3Code, indicatorCode } = useParams();
   const [countryIndicatorData, setCountryIndicatorData] = useState([]);
   const [countryName, setCountryName] = useState("");
+  
 
   useEffect(() => {
     console.log("Iniciando fetchData desde CountryInfo");
