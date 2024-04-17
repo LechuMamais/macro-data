@@ -11,11 +11,11 @@ const CountryInfo = () => {
   
 
   useEffect(() => {
-    console.log("Iniciando fetchData desde CountryInfo");
+    //console.log("Iniciando fetchData desde CountryInfo");
     const fetchData = async () => {
       try {
         const data = await getIndicatorData(countryIso3Code, indicatorCode);
-        console.log("Received data:", data);
+        //console.log("Received data:", data);
         if (data) {
           setCountryIndicatorData(data); // Actualizar el estado con los datos recibidos
         } else {

@@ -14,7 +14,7 @@ Hecho:
     Haremos que los graficos se vean de a uno, con un menu desplegabla que nos muestre el listado de indicadores posibles de consultar.
     Luego, será al hacer click en uno de los indicadores que se consulte a la api sobre este indicador específico para el país previamente seleccionado
     Aquí es que entra el useEffect que tenemos que usar en la práctica.
-    Además va a ser aca donde tambien se pasen parámetros por la url de pais e indicador.
+    Además va a ser acá donde tambien se pasen parámetros por la url de pais e indicador.
 
 
 Futuras Mejoras:
@@ -22,6 +22,9 @@ Futuras Mejoras:
     cada uno de los valores independientemente
 
     2. Refactorizar y reutilizar los componentes de la busqueda de paises, para utilizarlos en la busqueda de indicadores
+
+    3. Hacer una funcion para los indicatorCodes y los code2iso que reciba un codigo y devuelva un valor, y al reves.
+    Reutilizarla en los input de busqueda y en el grafico
 
     Cositas para mejorar los graficos:
     Se superponen los valores max arriba a la izq

@@ -1,5 +1,5 @@
 import React from "react";
-import { indicatorCodes } from "../../utils/indicatorCodes";
+import { indicatorCodes } from "../../../utils/indicatorCodes";
 import IndicatorLink from "../IndicatorLink/IndicatorLink";
 
 const IndicatorsList = () => {

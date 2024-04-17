@@ -8,9 +8,9 @@ const IndicatorLink = ({ indicator }) => {
   return (
     <li>
       <Link
-        to={`/country/${countryIso3Code?countryIso3Code:'ES'}/indicator/${indicator.code}`}
+        to={`/country/${countryIso3Code?countryIso3Code:'ES'}/indicator/${indicator.Code}`}
       >
-        {indicator.name}
+        {indicator.Name}
       </Link>
     </li>
   );

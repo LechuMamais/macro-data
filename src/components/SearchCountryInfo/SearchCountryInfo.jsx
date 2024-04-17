@@ -1,30 +1,26 @@
 import './SearchCountryInfo.css';
 
-import React, { useState } from "react";
-import CountrySearchInput from "../CountrySearchInput/CountrySearchInput";
+import React from "react";
+import CountrySearchInput, { IndicatorSearchInput } from "../CountrySearchInput/CountrySearchInput";
 import CountryInfo from "../CountryInfo/CountryInfo";
-import IndicatorsList from "../IndicatorsList/IndicatorsList";
+import { SearchBar } from '../SearchBar/SearchBar';
+//import IndicatorsList from "../OldComponents/IndicatorsList/IndicatorsList";
 
 const SearchCountryInfo = () => {
-  const [selectedCountry, setSelectedCountry] = useState(null);
-
-  const handleCountrySelect = (country) => {
-    setSelectedCountry(country);
-  };
-
-
   return (
     <div className="search-country-info">
       <div id="searchBarContainer">
+        {/* Selector de paises*/}
         <div className="searchBarContainer-country">
           <h3>Selecciona un país</h3>
-          <CountrySearchInput onCountrySelect={handleCountrySelect} />
+          <CountrySearchInput />
         </div>
 
-        {/* Mostrar la lista de indicadores solo si se ha seleccionado un país */}
+        {/* Selector de indicadores*/}
         <div className="searchBarContainer-indicator">
           <h3>Selecciona un indicador</h3>
-          <IndicatorsList/>
+          {/*<IndicatorSearchInput/>*/}
+          <SearchBar filter='indicator'/>
         </div>
       </div>
 
