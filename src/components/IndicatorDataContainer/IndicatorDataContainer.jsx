@@ -1,7 +1,8 @@
+import "./IndicatorDataContainer.css";
+
 import { useState, useEffect } from "react";
 import { indicatorCodes } from "../../utils/indicatorCodes";
 import IndicatorGraphic from "../IndicatorGraphic/IndicatorGraphic";
-import "./IndicatorDataContainer.css";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {
   // Estado para almacenar el nombre del indicador y su código
@@ -13,9 +14,9 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
     const getIndicatorDetails = () => {
       if (countryIndicatorData) {
         const firstIndicatorId = countryIndicatorData[1][0].indicator.id;
-        const foundIndicator = indicatorCodes.find((i) => i.code === firstIndicatorId);
+        const foundIndicator = indicatorCodes.find((i) => i.Code === firstIndicatorId);
         if (foundIndicator) {
-          setIndicatorName(foundIndicator.name);
+          setIndicatorName(foundIndicator.Name);
           setIndicatorCode(firstIndicatorId);
         }
       }

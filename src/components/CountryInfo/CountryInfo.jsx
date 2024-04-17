@@ -1,8 +1,9 @@
+import './CountryInfo.css';
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getIndicatorData } from "../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
-import countriesWithCodes from "../../utils/code3iso_eng";
+import countriesCodes from "../../utils/code2iso.json";
 
 const CountryInfo = () => {
   const { countryIso3Code, indicatorCode } = useParams();
@@ -27,15 +28,15 @@ const CountryInfo = () => {
     if (countryIso3Code && indicatorCode) {
       fetchData(); // Llamar a la función fetchData solo si existen countryIso3Code e indicatorCode
     }
-  }, [countryIso3Code, indicatorCode]); // <-- Dependencias del efecto
+  }, [countryIso3Code, indicatorCode]); // Volver a ejecutar si cambian los parametros de la url
 
   // useEffect para obtener el nombre del país
   useEffect(() => {
-    const foundCountry = countriesWithCodes.find(
-      (country) => country.code3iso === countryIso3Code
+    const foundCountry = countriesCodes.find(
+      (country) => country.Code === countryIso3Code
     );
     if (foundCountry) {
-      setCountryName(foundCountry.name);
+      setCountryName(foundCountry.Name);
     }
   }, [countryIso3Code]); // <-- Dependencia para actualizar el nombre del país
 

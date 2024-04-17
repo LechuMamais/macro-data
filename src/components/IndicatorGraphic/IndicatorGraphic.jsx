@@ -22,7 +22,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
 
   // Unidad de medida
   const unit = indicatorCodes.find(
-    (i) => i.code === countryIndicatorData[1][0].indicator.id
+    (i) => i.Code === countryIndicatorData[1][0].indicator.id
   )?.measurement || "unidad_desconocida";
 
   //Damos vuelta los datos, porque vienen en orden descentente en fecha
