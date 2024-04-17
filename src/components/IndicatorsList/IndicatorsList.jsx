@@ -2,7 +2,7 @@ import React from "react";
 import { indicatorCodes } from "../../utils/indicatorCodes";
 import IndicatorLink from "../IndicatorLink/IndicatorLink";
 
-const IndicatorsList = ({ selectedCountryCode, onSelectIndicator }) => {
+const IndicatorsList = ({ onSelectIndicator }) => {
   const handleIndicatorSelect = (indicator) => {
     onSelectIndicator(indicator);
   };
@@ -13,7 +13,6 @@ const IndicatorsList = ({ selectedCountryCode, onSelectIndicator }) => {
         {indicatorCodes.map((indicator) => (
           <IndicatorLink
             key={indicator.code}
-            countryCode={selectedCountryCode}
             indicator={indicator}
             onClick={handleIndicatorSelect}
           />

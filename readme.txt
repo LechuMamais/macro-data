@@ -18,7 +18,10 @@ Hecho:
 
 
 Futuras Mejoras:
-    1. Refactorizar y reutilizar los componentes de la busqueda de paises, para utilizarlos en la busqueda de indicadores
+    1. Configurar correctamente el Router. Que se pueda cambiar el pais y el indicador de forma separada, que se modifiquen los params de la url al cambiar
+    cada uno de los valores independientemente
+
+    2. Refactorizar y reutilizar los componentes de la busqueda de paises, para utilizarlos en la busqueda de indicadores
 
     Cositas para mejorar los graficos:
     Se superponen los valores max arriba a la izq

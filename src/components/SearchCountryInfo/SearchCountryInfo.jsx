@@ -11,7 +11,6 @@ const SearchCountryInfo = () => {
 
   const handleCountrySelect = (country) => {
     setSelectedCountry(country);
-    setSelectedIndicator(null); // Resetear el indicador seleccionado al cambiar de país
   };
 
   const handleIndicatorSelect = (indicator) => {
@@ -32,7 +31,6 @@ const SearchCountryInfo = () => {
           {selectedCountry && (
             <IndicatorsList
               onSelectIndicator={handleIndicatorSelect}
-              selectedCountryCode={selectedCountry.Code}
             />
           )}
         </div>
