@@ -1,4 +1,4 @@
-import "./CountrySearchInput.css";
+/*import "./CountrySearchInput.css";
 import React, { useEffect, useState } from "react";
 import countriesData from "../../utils/code2iso.json";
 import SearchLabel from "../SearchLabel/SearchLabel";
@@ -126,3 +126,4 @@ export const IndicatorSearchInput = () => {
 };
 
 export default CountrySearchInput;
+*/

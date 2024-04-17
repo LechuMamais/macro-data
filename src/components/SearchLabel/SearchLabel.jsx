@@ -8,7 +8,6 @@ const SearchLabel = ({
   onChange,
   placeholder,
   id,
-  labelFor,
   lens = false,
 }) => {
   // Referencia para el input

@@ -15,6 +15,7 @@ export const SearchBar = (filter) => {
 
   useEffect(() => {
     if (filter.filter == "country") {
+        // Si por params están los codigos de paises e indicadores, buscar su Name y mustrarlo en los input
       if (countryIso3Code && indicatorCode) {
         // Buscar en el array code2iso para encontrar el objeto con el código de país correspondiente
         const countryInfo = code2iso.find(
@@ -45,28 +46,20 @@ export const SearchBar = (filter) => {
   const handleInputChange = (e) => {
     const inputText = e.target.value;
     setFilterName(inputText);
-    console.log("Input Text:", inputText);
-
     let filteredFilterNames = [];
-    ///////////////////
-    if (filter === "country") {
+
+    // Si se está utilizando para filter, que busque coincidencias en el array de países, si indicadores en el array de indicadores
+    if (filter.filter == "country") {
       filteredFilterNames = countriesData.filter((country) =>
         country.Name.toLowerCase().includes(inputText.toLowerCase())
       );
     }
     if (filter.filter == "indicator") {
-      console.log(filter);
-      console.log(indicatorCodes);
       filteredFilterNames = indicatorCodes.filter((indicator) => 
         indicator.Name.toLowerCase().includes(inputText.toLowerCase())
-      ); // Filtrando del array de codigos de indicadores
-      console.log(filteredFilterNames);
+      ); 
     }
-    //////////////////////
-    console.log(filter.filter);
-
-    console.log(filteredFilterNames);
-
+    // devuelve el array de las coincidencias con el input
     setFilteredFilters(filteredFilterNames);
   };
 
@@ -88,7 +81,6 @@ export const SearchBar = (filter) => {
             : ""
         }
         id={filter.filter + "SearchInput"}
-        labelFor={filter}
         lens="true"
       />
       {filteredFilters.length > 0 && (

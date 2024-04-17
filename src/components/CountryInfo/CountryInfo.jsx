@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getIndicatorData } from "../../utils/getCountryData";
+import { getIndicatorData } from "../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
 import countriesWithCodes from "../../utils/code3iso_eng";
 
@@ -9,13 +9,10 @@ const CountryInfo = () => {
   const [countryIndicatorData, setCountryIndicatorData] = useState([]);
   const [countryName, setCountryName] = useState("");
   
-
   useEffect(() => {
-    //console.log("Iniciando fetchData desde CountryInfo");
     const fetchData = async () => {
       try {
         const data = await getIndicatorData(countryIso3Code, indicatorCode);
-        //console.log("Received data:", data);
         if (data) {
           setCountryIndicatorData(data); // Actualizar el estado con los datos recibidos
         } else {
@@ -61,31 +58,3 @@ const CountryInfo = () => {
 };
 
 export default CountryInfo;
-
-
-
-/*import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
-import "./CountryInfo.css";
-import React from "react";
-import { getIndicatorData } from '../../utils/getCountryData';
-
-const CountryInfo = ({ countryIndicatorData }) => {
-  const countryName = countryIndicatorData[1][0].country.value;
-  const countryIso3Code = countryIndicatorData[0].countryiso3code;
-  const indicator = countryIndicatorData[1][0].indicator.id;
-  console.log(countryIndicatorData)
-  return (
-    <div>
-      <div id="SelectedCountryName">
-        <h3 id="countryName">{countryName}</h3>
-        <h4 id="countryIso3Code">{countryIso3Code}</h4>
-      </div>
-
-      <ul className="indicatorsContainer">
-        <IndicatorDataContainer countryIndicatorData={countryIndicatorData} />
-      </ul>
-    </div>
-  );
-};
-
-export default CountryInfo;*/

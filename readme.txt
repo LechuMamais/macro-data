@@ -16,12 +16,13 @@ Hecho:
     Aquí es que entra el useEffect que tenemos que usar en la práctica.
     Además va a ser acá donde tambien se pasen parámetros por la url de pais e indicador.
 
-
-Futuras Mejoras:
     1. Configurar correctamente el Router. Que se pueda cambiar el pais y el indicador de forma separada, que se modifiquen los params de la url al cambiar
     cada uno de los valores independientemente
-
+    
     2. Refactorizar y reutilizar los componentes de la busqueda de paises, para utilizarlos en la busqueda de indicadores
+
+
+Futuras Mejoras:
 
     3. Hacer una funcion para los indicatorCodes y los code2iso que reciba un codigo y devuelva un valor, y al reves.
     Reutilizarla en los input de busqueda y en el grafico

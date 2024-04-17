@@ -1,9 +1,9 @@
 import './SearchCountryInfo.css';
 
 import React from "react";
-import CountrySearchInput, { IndicatorSearchInput } from "../CountrySearchInput/CountrySearchInput";
 import CountryInfo from "../CountryInfo/CountryInfo";
 import { SearchBar } from '../SearchBar/SearchBar';
+//import CountrySearchInput, { IndicatorSearchInput } from "../CountrySearchInput/CountrySearchInput";
 //import IndicatorsList from "../OldComponents/IndicatorsList/IndicatorsList";
 
 const SearchCountryInfo = () => {
@@ -13,7 +13,8 @@ const SearchCountryInfo = () => {
         {/* Selector de paises*/}
         <div className="searchBarContainer-country">
           <h3>Selecciona un país</h3>
-          <CountrySearchInput />
+          {/*<CountrySearchInput />*/}
+          <SearchBar filter='country'/>
         </div>
 
         {/* Selector de indicadores*/}
