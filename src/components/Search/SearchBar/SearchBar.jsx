@@ -1,14 +1,14 @@
 import "./SearchBar.css";
 import React, { useEffect, useRef, useState } from "react";
-import countriesData from "../../utils/code2iso.json";
+import countriesData from "../../../utils/code2iso.json";
 import SearchLabel from "../SearchLabel/SearchLabel";
 import FilteredList from "../FilteredList/FilteredList";
-import { indicatorCodes } from "../../utils/indicatorCodes";
+import { indicatorCodes } from "../../../utils/indicatorCodes";
 import { useParams } from "react-router";
 import {
   findIndicatorByCode,
   findCountryByCode,
-} from "../../utils/codesHandler";
+} from "../../../utils/codesHandler";
 
 // acepta 'country' o 'indicator'
 export const SearchBar = (filter) => {

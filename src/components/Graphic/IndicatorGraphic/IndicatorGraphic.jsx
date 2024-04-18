@@ -3,7 +3,7 @@ import "./IndicatorGraphic.css";
 import GraphicBar from "../GraphicBar/GraphicBar";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { useEffect } from "react";
-import { findIndicatorByCode } from "../../utils/codesHandler";
+import { findIndicatorByCode } from "../../../utils/codesHandler";
 
 const IndicatorGraphic = ({ countryIndicatorData }) => {
   const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
@@ -57,8 +57,8 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
       <div className="mouse-hover-bar-info">
         
       </div>
-      <p id="maxValue">{maxValue.toFixed(2)}</p>
-      <p id="minValue">{minValue.toFixed(2)}</p>
+      <p id="maxValue">Max: {maxValue.toFixed(2)+unit}</p>
+      <p id="minValue">{minValue.toFixed(1)}</p>
       <p id="empty-space"></p>
       <div id="datesContainer">
         <p id="minDate">{minDate}</p>
