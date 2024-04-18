@@ -1,13 +1,22 @@
 .graphic-horizontal-line{
+    display: flex;
+    gap: 1rem;
     width: 2000%;
     height: 22.5px;
     border-bottom: 1px dashed black;
     transition: all 390ms ease-out;
     position: relative;
     top: -10px;
-    left:0%;
+    left: 0%;
 }
-.graphic-horizontal-line p{
-    margin-left: 5%;
+#horizontal-line-text-container{
+    position: absolute;
+    left: 5%;
+    width: auto;
+    display: flex;
+    transition: all 250ms ease-out;
+}
+#horizontal-line-text-container p{
+    min-width: 85px;
     font-size: 14px;
 }

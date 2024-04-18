@@ -41,16 +41,21 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
     }, 200);
   };
 
+  const HorizontalLineTextTopCalculator=(hoverValue)=>{
+    let marginModifier = 0;
+    if((maxValue-minValue)*0.9<hoverValue){
+      marginModifier = 26.5
+      console.log(true)
+    };
+    console.log('maxValue', maxValue, 'minValue', minValue, 'hoverValue', hoverValue)
+    console.log(marginModifier)
+    return marginModifier;
+  }
+
   return (
     <div className="indicatorGraphicContainer">
       <div className="mouse-hover-bar-info">
-        <p>Año: {hoverInfo.date}</p>
-        <p>
-          Valor:{" "}
-          {hoverInfo.value
-            ? hoverInfo.value.toFixed(2) + " " + unit
-            : "Sin datos"}
-        </p>
+        
       </div>
       <p id="maxValue">{maxValue.toFixed(2)}</p>
       <p id="minValue">{minValue.toFixed(2)}</p>
@@ -73,7 +78,8 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
       </div>
       <HorizontalLine
         top={(449 * (hoverInfo.value / maxValue) + 42.5) * -1 + "px"}
-        valueHover={hoverInfo.value}
+        textContainerMarginTop={HorizontalLineTextTopCalculator(hoverInfo.value)}
+        hoverInfo={hoverInfo}
         unit={unit}
       />
     </div>
