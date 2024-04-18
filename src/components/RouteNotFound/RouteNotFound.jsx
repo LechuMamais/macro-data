@@ -4,7 +4,7 @@ import React from 'react'
 
 const RouteNotFound = () => {
   return (
-    <div>
+    <div id='route-not-found'>
       <h4>Route not found ☠️</h4>
     </div>
   )

@@ -15,20 +15,31 @@ const CountryInfo = () => {
     const fetchData = async () => {
       try {
         const data = await getIndicatorData(countryIso3Code, indicatorCode);
+        console.log(data);
         // Cuando se le envian codigos incorrectos, la api devuelve un array con datos del error.
         // Si hay este error, lo metemos en setError
-        if (data && data.length > 0 && data[0].message) {
-          const firstError = data[0].message[0];
-          if (firstError.id === "120") {
-            setError(firstError.value);
-            setCountryIndicatorData([]); // Reiniciar el estado si hay error
+
+        if (!data) {
+          // Si !data el error es que no se pudo obtener informacion de la API
+          setError(
+            "No se pudo obtener datos válidos para este país y este indicador."
+          );
+          setCountryIndicatorData([]); // Reiniciar el estado si los datos son inválidos
+        }
+        if (data && Array.isArray(data) && data.length > 0) {
+          if(data.length ==2 && data[1]==null) {
+            setError("No existen datos para el pais seleccinado."); // Establecer el estado de error en caso de error
+            setCountryIndicatorData([]); // Reiniciar el estado en caso de error
+          }else if (data[0].message && data[0].message[0].id === "120") {
+            console.log("Pato", data);
+            
+              setError(data[0].message[0].value);
+              setCountryIndicatorData([]); // Reiniciar el estado si hay error
+            
           } else {
+            setError(null)
             setCountryIndicatorData(data); // Actualizar el estado con los datos recibidos
           }
-        } else {
-          // Si !data el error es que no se pudo obtener informacion de la API
-          setError("No se pudo obtener datos válidos para este país y este indicador.");
-          setCountryIndicatorData([]); // Reiniciar el estado si los datos son inválidos
         }
       } catch (error) {
         console.error("Error fetching country data:", error);
@@ -52,7 +63,7 @@ const CountryInfo = () => {
   return (
     <div>
       {/* Renderizar el mensaje de error si está presente */}
-      {error && <div>{error}</div>}
+      {error && <div id="no-data-to-show"><p>{error}</p></div>}
       {/* Renderizar solo si countryIndicatorData tiene elementos y no hay error */}
       {!error && countryIndicatorData.length > 0 && (
         <div>
@@ -63,7 +74,9 @@ const CountryInfo = () => {
 
           <ul className="indicatorsContainer">
             {/* Pasar countryIndicatorData como prop al componente IndicatorDataContainer */}
-            <IndicatorDataContainer countryIndicatorData={countryIndicatorData} />
+            <IndicatorDataContainer
+              countryIndicatorData={countryIndicatorData}
+            />
           </ul>
         </div>
       )}

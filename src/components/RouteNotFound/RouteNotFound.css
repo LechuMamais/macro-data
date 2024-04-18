@@ -1,0 +1,11 @@
+#route-not-found {
+    height: calc(100vh - 86px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#route-not-found h4 {
+    font-size: 30px;
+    font-weight: 400;
+}

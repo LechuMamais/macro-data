@@ -45,10 +45,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
     let marginModifier = 0;
     if((maxValue-minValue)*0.9<hoverValue){
       marginModifier = 26.5
-      console.log(true)
     };
-    console.log('maxValue', maxValue, 'minValue', minValue, 'hoverValue', hoverValue)
-    console.log(marginModifier)
     return marginModifier;
   }
 
@@ -77,7 +74,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
         ))}
       </div>
       <HorizontalLine
-        top={(449 * (hoverInfo.value / maxValue) + 42.5) * -1 + "px"}
+        top={(449 * (hoverInfo.value / maxValue) + 39.5) * -1 + "px"}
         textContainerMarginTop={HorizontalLineTextTopCalculator(hoverInfo.value)}
         hoverInfo={hoverInfo}
         unit={unit}
