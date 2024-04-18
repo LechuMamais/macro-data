@@ -1,9 +1,9 @@
 import './App.css'
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import RouteNotFound from "./components/RouteNotFound/RouteNotFound";
-import Footer from "./components/Footer/Footer";
+import Home from "./components/Global/Home/Home";
+import RouteNotFound from "./components/Global/RouteNotFound/RouteNotFound";
+import Footer from "./components/Global/Footer/Footer";
 
 function App() {
   return (

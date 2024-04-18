@@ -1,8 +1,8 @@
 import "./IndicatorDataContainer.css";
 
 import { useState, useEffect } from "react";
-import IndicatorGraphic from "../Graphic/IndicatorGraphic/IndicatorGraphic";
-import { findIndicatorByCode } from "../../utils/codesHandler";
+import IndicatorGraphic from "../../Graphic/IndicatorGraphic/IndicatorGraphic";
+import { findIndicatorByCode } from "../../../utils/codesHandler";
 import { useParams } from "react-router";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {

@@ -1,5 +1,5 @@
-import "./Home.css";
 import SearchCountryInfo from "../SearchCountryInfo/SearchCountryInfo";
+import "./Home.css";
 import React from "react";
 
 const Home = () => {

@@ -1,9 +1,9 @@
 import "./CountryInfo.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getIndicatorData } from "../../services/getIndicatorData";
+import { getIndicatorData } from "../../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
-import { findCountryByCode } from "../../utils/codesHandler";
+import { findCountryByCode } from "../../../utils/codesHandler";
 
 const CountryInfo = () => {
   const { countryIso3Code, indicatorCode } = useParams();
