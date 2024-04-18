@@ -9,3 +9,11 @@
     font-size: 30px;
     font-weight: 400;
 }
+
+#no-data-to-show{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
