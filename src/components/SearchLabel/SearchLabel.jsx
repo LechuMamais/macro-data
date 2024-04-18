@@ -1,10 +1,10 @@
-import { useParams } from "react-router";
 import "./SearchLabel.css";
-import React, { useEffect, useRef } from "react";
-import countriesWithCodes from "../../utils/code3iso_eng";
+
+import React, { useRef } from "react";
 
 const SearchLabel = ({
   value,
+  onClick,
   onChange,
   placeholder,
   id,
@@ -41,6 +41,7 @@ const SearchLabel = ({
         id={id}
         type="text"
         value={value}
+        onClick={onClick}
         onChange={onChange}
         placeholder={placeholder}
         required

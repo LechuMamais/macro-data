@@ -1,5 +1,6 @@
 .search-input-container {
   display: flex;
+  width: 300px;
   align-items: center;
   gap: 0.5rem;
   border: 1px solid rgb(133, 133, 133);

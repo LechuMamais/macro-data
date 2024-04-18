@@ -1,15 +1,15 @@
-import './CountryInfo.css';
+import "./CountryInfo.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getIndicatorData } from "../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
-import countriesCodes from "../../utils/code2iso.json";
+import { findCountryByCode } from "../../utils/codesHandler";
 
 const CountryInfo = () => {
   const { countryIso3Code, indicatorCode } = useParams();
   const [countryIndicatorData, setCountryIndicatorData] = useState([]);
   const [countryName, setCountryName] = useState("");
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,11 +32,8 @@ const CountryInfo = () => {
 
   // useEffect para obtener el nombre del país
   useEffect(() => {
-    const foundCountry = countriesCodes.find(
-      (country) => country.Code === countryIso3Code
-    );
-    if (foundCountry) {
-      setCountryName(foundCountry.Name);
+    if (countryIso3Code && indicatorCode) {
+      setCountryName(findCountryByCode(countryIso3Code).Name); //
     }
   }, [countryIso3Code]); // <-- Dependencia para actualizar el nombre del país
 

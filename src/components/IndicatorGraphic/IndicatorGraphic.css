@@ -2,7 +2,7 @@
     height: 500px;
     width: 100vw;
     max-width: 1200px;
-    background-color: beige;
+    background-color: rgb(241, 241, 241);
     display: grid;
     grid-template-columns: 5% 95%;
     grid-template-rows: 5% 85% 5%;

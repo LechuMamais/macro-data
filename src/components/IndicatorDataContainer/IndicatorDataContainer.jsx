@@ -1,29 +1,26 @@
 import "./IndicatorDataContainer.css";
 
 import { useState, useEffect } from "react";
-import { indicatorCodes } from "../../utils/indicatorCodes";
 import IndicatorGraphic from "../IndicatorGraphic/IndicatorGraphic";
+import { findIndicatorByCode } from "../../utils/codesHandler";
+import { useParams } from "react-router";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {
+  const { countryIso3Code, indicatorCode } = useParams();
   // Estado para almacenar el nombre del indicador y su código
   const [indicatorName, setIndicatorName] = useState("");
-  const [indicatorCode, setIndicatorCode] = useState("");
 
   useEffect(() => {
     // Función para obtener el nombre del indicador y actualizar el estado
     const getIndicatorDetails = () => {
       if (countryIndicatorData) {
-        const firstIndicatorId = countryIndicatorData[1][0].indicator.id;
-        const foundIndicator = indicatorCodes.find((i) => i.Code === firstIndicatorId);
-        if (foundIndicator) {
-          setIndicatorName(foundIndicator.Name);
-          setIndicatorCode(firstIndicatorId);
-        }
+        setIndicatorName(findIndicatorByCode(countryIndicatorData[1][0].indicator.id).Name);
+
       }
     };
 
     getIndicatorDetails(); // Llamar a la función dentro del useEffect
-  }, [countryIndicatorData]); // Ejecutar useEffect cuando countryIndicatorData cambie
+  }, [countryIso3Code, indicatorCode, countryIndicatorData]); // Ejecutar useEffect cuando countryIndicatorData cambie
 
   return (
     <>

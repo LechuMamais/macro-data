@@ -21,18 +21,18 @@ Hecho:
 
     2. Refactorizar y reutilizar los componentes de la busqueda de paises, para utilizarlos en la busqueda de indicadores
 
-
-Futuras Mejoras:
-
     3. Hacer una funcion para los indicatorCodes y los code2iso que reciba un codigo y devuelva un valor, y al reves.
     Reutilizarla en los input de busqueda y en el grafico
+
+
+Futuras Mejoras:
 
     Cositas para mejorar los graficos:
         Se superponen los valores max arriba a la izq
         arreglar lo de los minValue negativos
         Mejorar lo del setTimeout, que se tarde un tiki en mover la linea
         Quitar ceros cuando son muchos miles, millones, etc...
-        Si no hay valores de los ultimos años, no mostrarlos (que maxDate sea, por ej, 2022)
+         Si no hay valores de los ultimos o los primeros años, no mostrarlos (que maxDate sea, por ej, 2022)
     - Hecho:
         arreglar que se vean las unidades
         Que se vea el nombre del pais y el indicador!k

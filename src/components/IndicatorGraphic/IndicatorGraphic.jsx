@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./IndicatorGraphic.css";
 import GraphicBar from "../GraphicBar/GraphicBar";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
-import { indicatorCodes } from "../../utils/indicatorCodes";
 import { useEffect } from "react";
+import { findIndicatorByCode } from "../../utils/codesHandler";
 
 const IndicatorGraphic = ({ countryIndicatorData }) => {
   const [hoverInfo, setHoverInfo] = useState({ date: "", value: "" });
@@ -20,10 +20,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
     );
   }
 
-  // Unidad de medida
-  const unit = indicatorCodes.find(
-    (i) => i.Code === countryIndicatorData[1][0].indicator.id
-  )?.measurement || "unidad_desconocida";
+  const unit = findIndicatorByCode(countryIndicatorData[1][0].indicator.id).measurement;
 
   //Damos vuelta los datos, porque vienen en orden descentente en fecha
   const reversedData = [...countryIndicatorData[1]].reverse();
@@ -75,7 +72,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
         ))}
       </div>
       <HorizontalLine
-        top={(449 * (hoverInfo.value / maxValue) + 43.5) * -1 + "px"}
+        top={(449 * (hoverInfo.value / maxValue) + 42.5) * -1 + "px"}
         valueHover={hoverInfo.value}
         unit={unit}
       />

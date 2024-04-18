@@ -119,7 +119,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -130,31 +130,90 @@
 
 /*===========================================================================================================================================*/
 
+.custom-link{
+  color: black;
+}
 
 input[type="text"] {
   /* Establecer que el input ocupe todo el ancho disponible */
   width: 100%;
-  max-width: 200px;
-  
+  max-width: 300px;
+
   /* Quitar el borde en todos los estados */
   border: none;
-  outline: none; /* Eliminar el contorno al enfocar */
-  
-  /* Otros estilos opcionales */
-  padding: 8px; /* Añadir relleno interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border-radius: 4px; /* Añadir esquinas redondeadas (opcional) */
-   /* Color de fondo (opcional) */
-  color: #333; /* Color de texto (opcional) */
+  outline: none;
+  /* Eliminar el contorno al enfocar */
+
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  font-size: 16px;
+  border-radius: 4px;
+
+  color: #333;
 }
 
 input[type="text"]:hover {
+
   /* Estilos al pasar el mouse (opcional) */
-  /* Puedes añadir aquí estilos adicionales al pasar el mouse sobre el input */
+  .bi-search {
+    scale: 1.05;
+  }
+
 }
 
 input[type="text"]:focus {
   background-color: #e8e8e8;
   /* Estilos al enfocar (opcional) */
   /* Puedes añadir aquí estilos adicionales al enfocar el input */
+}
+
+
+/*===========================================================================================================================================*/
+
+
+
+
+@media screen and (max-width: 768px) {
+  h1{
+    font-size: 21px;
+  }
+  #searchBarContainer{
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #FilteredCountriesList{
+    top: 139px;
+  }
+  #FilteredIndicatorsList{
+    top: 208px;
+  }
+
+  #countryName{
+    font-size: 24px;
+  }
+  .indicator-name{
+    font-size: 18px;
+  }
+  .indicator-code{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  #FilteredCountriesList{
+    top: 164px;
+  }
+  #FilteredIndicatorsList{
+    top: 233px;
+  }
+
+  #countryName{
+    font-size: 21px;
+  }
+  .indicator-name{
+    font-size: 15px;
+  }
+  .indicator-code{
+    font-size: 12px;
+  }
 }
