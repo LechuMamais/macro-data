@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route
-            path="/country/:countryIso3Code/indicator/:indicatorCode"
+            path="/country/:countryIso3Code/indicator/:indicatorCode/from/:from/to/:to"
             element={<Home />}
           />
           <Route path="*" element={<RouteNotFound />} />

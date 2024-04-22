@@ -37,4 +37,9 @@ Futuras Mejoras:
         Quitar ceros cuando son muchos miles, millones, etc...
         Si no hay valores de los ultimos o los primeros años, no mostrarlos (que maxDate sea, por ej, 2022)
     
-    Seleccionar un intervalo de tiempo
+    Seleccionar un intervalo de tiempo:
+        - Que el enrutador aceote y maneje year-from y year-topics - DONE
+        - Que las barras de busqueda acepten years y los manejen correctamente, incluyendolos en la URL - DONE
+        - Que el gráfico acepte y maneje correctamente las dos variables de tiempo
+        - Incluir las barras de busqueda en alguna parte de la web - DONE
+        - Adaptar SearchBar para que tenga estilos propios

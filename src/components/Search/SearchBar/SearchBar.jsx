@@ -73,6 +73,12 @@ export const SearchBar = (filter) => {
         indicator.Name.toLowerCase().includes(inputText.toLowerCase())
       );
     }
+    // Si se está utilizando para years, creamos los arrays de years por 50años, que es lo máximo que acepta la API
+    if (filter.filter == "year-from"||filter.filter == "year-to"){
+      for(let i = 0; i < 50; i++){
+        filteredFilterNames.push(1974+i)
+      }
+    }
     // devuelve el array de las coincidencias con el input
     setFilteredFilters(filteredFilterNames);
   };
