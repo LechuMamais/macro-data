@@ -2,7 +2,7 @@
     width: 300px;
     position: absolute;
     top: calc(100% + 0.25rem) !important;
-    max-height: 70vh;
+    max-height: calc(80vh - 340px);
     overflow-y: scroll;
     border-radius: 8px;
     text-decoration: none;
