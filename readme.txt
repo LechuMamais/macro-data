@@ -28,11 +28,13 @@ Hecho:
         Se superponen los valores max arriba a la izq
         arreglar que se vean las unidades
         Que se vea el nombre del pais y el indicador!
+        arreglar lo de los minValue negativos
 
 Futuras Mejoras:
 
     Cositas para mejorar los graficos:
-        arreglar lo de los minValue negativos
         Mejorar lo del setTimeout, que se tarde un tiki en mover la linea
         Quitar ceros cuando son muchos miles, millones, etc...
-         Si no hay valores de los ultimos o los primeros años, no mostrarlos (que maxDate sea, por ej, 2022)
+        Si no hay valores de los ultimos o los primeros años, no mostrarlos (que maxDate sea, por ej, 2022)
+    
+    Seleccionar un intervalo de tiempo

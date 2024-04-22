@@ -4,7 +4,7 @@
     width: 2000%;
     height: 22.5px;
     border-bottom: 1px dashed black;
-    transition: all 390ms ease-out;
+    transition: all 450ms cubic-bezier(.32,.36,.45,.94);
     position: relative;
     top: -10px;
     left: 0%;
