@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 0.25rem;
     align-items: flex-start;
+    position: relative;
 }
 .searchBar h3{
     font-weight: 400;

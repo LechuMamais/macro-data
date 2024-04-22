@@ -1,7 +1,7 @@
 .select-list{
     width: 300px;
     position: absolute;
-    top: 151px;
+    top: calc(100% + 0.25rem) !important;
     max-height: 70vh;
     overflow-y: scroll;
     border-radius: 8px;
@@ -19,11 +19,7 @@
 .country-name-li:hover{
     background-color: rgb(207, 207, 207);
 }
-#FilteredFromYearsList{
-    top: 330px;
-    width: 150px;
-}
+#FilteredFromYearsList, 
 #FilteredToYearsList{
-    top: 330px;
     width: 150px;
 }

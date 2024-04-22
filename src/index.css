@@ -135,14 +135,11 @@
 }
 
 input[type="text"] {
-  /* Establecer que el input ocupe todo el ancho disponible */
   width: 100%;
   max-width: 300px;
 
-  /* Quitar el borde en todos los estados */
   border: none;
   outline: none;
-  /* Eliminar el contorno al enfocar */
 
   padding: 0.5rem 0 0.5rem 0.5rem;
   font-size: 16px;
@@ -152,8 +149,6 @@ input[type="text"] {
 }
 
 input[type="text"]:hover {
-
-  /* Estilos al pasar el mouse (opcional) */
   .bi-search {
     scale: 1.05;
   }
@@ -162,20 +157,11 @@ input[type="text"]:hover {
 
 input[type="text"]:focus {
   background-color: #e8e8e8;
-  /* Estilos al enfocar (opcional) */
-  /* Puedes añadir aquí estilos adicionales al enfocar el input */
 }
 
 
 /*===========================================================================================================================================*/
 
-
-
-/*@media screen and (max-height: 950px){
-  .indicatorGraphicContainer{
-    height: 400px;
-  }
-}*/
 
 
 @media screen and (max-width: 768px) {
@@ -186,19 +172,6 @@ input[type="text"]:focus {
     flex-direction: column;
     gap: 0.5rem;
   }
-  #FilteredCountriesList{
-    top: 139px;
-  }
-  #FilteredIndicatorsList{
-    top: 208px;
-  }
-  #FilteredFromYearsList{
-    top: 376px;
-  }
-  #FilteredToYearsList{
-      top: 376px;
-  }
-
   #countryName{
     font-size: 24px;
   }
@@ -212,19 +185,6 @@ input[type="text"]:focus {
 
 @media screen and (max-width: 500px) {
 
-  #FilteredCountriesList{
-    top: 164px;
-  }
-  #FilteredIndicatorsList{
-    top: 233px;
-  }
-  #FilteredFromYearsList{
-    top: 368px;
-  }
-  #FilteredToYearsList{
-      top: 368px;
-  }
-
   #countryName{
     font-size: 21px;
   }
@@ -233,23 +193,5 @@ input[type="text"]:focus {
   }
   .indicator-code{
     font-size: 12px;
-  }
-}
-
-@media screen and (max-width: 476px) {
-  #FilteredFromYearsList{
-    top: 393px;
-  }
-  #FilteredToYearsList{
-      top: 393px;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  #FilteredFromYearsList{
-    top: 410px;
-  }
-  #FilteredToYearsList{
-      top: 410px;
   }
 }

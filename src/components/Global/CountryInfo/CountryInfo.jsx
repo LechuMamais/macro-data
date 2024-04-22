@@ -17,7 +17,7 @@ const CountryInfo = () => {
     const fetchData = async () => {
       try {
         const data = await getIndicatorData(countryIso3Code, indicatorCode);
-        console.log(data);
+        //console.log(data);
         // Cuando se le envian codigos incorrectos, la api devuelve un array con datos del error.
         // Si hay este error, lo metemos en setError
 
