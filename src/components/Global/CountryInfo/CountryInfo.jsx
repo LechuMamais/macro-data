@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { getIndicatorData } from "../../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
 import { findCountryByCode } from "../../../utils/codesHandler";
+import { SearchBar } from "../../Search/SearchBar/SearchBar";
 
 const CountryInfo = () => {
-  const { countryIso3Code, indicatorCode } = useParams();
+  const { countryIso3Code, indicatorCode, from, to } = useParams();
   const [countryIndicatorData, setCountryIndicatorData] = useState([]);
+  const [filteredIndicatorData, setFilteredIndicatorData] = useState([]);
   const [countryName, setCountryName] = useState("");
   const [error, setError] = useState(null);
 
@@ -27,17 +29,14 @@ const CountryInfo = () => {
           setCountryIndicatorData([]); // Reiniciar el estado si los datos son inválidos
         }
         if (data && Array.isArray(data) && data.length > 0) {
-          if(data.length ==2 && data[1]==null) {
+          if (data.length == 2 && data[1] == null) {
             setError("No existen datos para el pais seleccinado."); // Establecer el estado de error en caso de error
             setCountryIndicatorData([]); // Reiniciar el estado en caso de error
-          }else if (data[0].message && data[0].message[0].id === "120") {
-            console.log("Pato", data);
-            
-              setError(data[0].message[0].value);
-              setCountryIndicatorData([]); // Reiniciar el estado si hay error
-            
+          } else if (data[0].message && data[0].message[0].id === "120") {
+            setError(data[0].message[0].value);
+            setCountryIndicatorData([]); // Reiniciar el estado si hay error
           } else {
-            setError(null)
+            setError(null);
             setCountryIndicatorData(data); // Actualizar el estado con los datos recibidos
           }
         }
@@ -60,12 +59,37 @@ const CountryInfo = () => {
     }
   }, [countryIso3Code]); // <-- Dependencia para actualizar el nombre del país
 
+  // useEffect para filtrar los datos por años
+  useEffect(() => {
+    if (countryIndicatorData && countryIndicatorData.length > 0) {
+      const metadata = countryIndicatorData[0]; // Metadatos del país e indnicador
+
+      // En countryIndicatorData[1] están todos los datos de todos los años para el pais y el indicador seleccionado
+      const indicatorData = countryIndicatorData[1];
+      // Filtrar los datos por rango de años
+      const filteredData = indicatorData.filter((data) => {
+        const year = parseInt(data.date); // Convertir a número
+        return year >= parseInt(from) && year <= parseInt(to);
+      });
+
+      // Crear un nuevo array con los metadatos y los datos filtrados
+      const filteredCountryIndicatorData = [metadata, filteredData];
+
+      // Actualizar el estado con los datos filtrados
+      setFilteredIndicatorData(filteredCountryIndicatorData);
+    }
+  }, [countryIndicatorData, from, to]);
+
   return (
     <div>
       {/* Renderizar el mensaje de error si está presente */}
-      {error && <div id="no-data-to-show"><p>{error}</p></div>}
-      {/* Renderizar solo si countryIndicatorData tiene elementos y no hay error */}
-      {!error && countryIndicatorData.length > 0 && (
+      {error && (
+        <div id="no-data-to-show">
+          <p>{error}</p>
+        </div>
+      )}
+      {/* Renderizar solo si filteredIndicatorData tiene elementos y no hay error */}
+      {!error && filteredIndicatorData.length > 0 && (
         <div>
           <div id="SelectedCountryName">
             <h3 id="countryName">{countryName}</h3>
@@ -75,7 +99,7 @@ const CountryInfo = () => {
           <ul className="indicatorsContainer">
             {/* Pasar countryIndicatorData como prop al componente IndicatorDataContainer */}
             <IndicatorDataContainer
-              countryIndicatorData={countryIndicatorData}
+              countryIndicatorData={filteredIndicatorData}
             />
           </ul>
         </div>

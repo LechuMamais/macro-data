@@ -18,6 +18,11 @@
   box-sizing: border-box;
 }
 
-.csearch-input-container input:focus {
+.search-input-container input:focus {
   border: none;
+}
+
+.year-fromSearchInput-container,
+.year-toSearchInput-container{
+  width: 120px;
 }

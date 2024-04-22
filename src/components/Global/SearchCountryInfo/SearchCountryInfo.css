@@ -6,7 +6,7 @@
     gap: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-#searchBarContainer {
+.search-bar-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;

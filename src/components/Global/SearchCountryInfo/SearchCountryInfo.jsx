@@ -7,7 +7,7 @@ import { SearchBar } from '../../Search/SearchBar/SearchBar';
 const SearchCountryInfo = () => {
   return (
     <div className="search-country-info">
-      <div id="searchBarContainer">
+      <div id="searchBarContainer" className='search-bar-container'>
         {/* Selector de paises*/}
         <div className="searchBar" id='searchBarContainer-country'>
           <h3>Selecciona un país</h3>

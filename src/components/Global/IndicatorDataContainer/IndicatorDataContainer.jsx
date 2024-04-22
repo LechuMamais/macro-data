@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 import { SearchBar } from "../../Search/SearchBar/SearchBar";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {
-  const { countryIso3Code, indicatorCode } = useParams();
+  const { countryIso3Code, indicatorCode, from, to } = useParams();
   // Estado para almacenar el nombre del indicador y su código
   const [indicatorName, setIndicatorName] = useState("");
 
@@ -15,7 +15,7 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
     // Función para obtener el nombre del indicador y actualizar el estado
     const getIndicatorDetails = () => {
       if (countryIndicatorData) {
-        setIndicatorName(findIndicatorByCode(countryIndicatorData[1][0].indicator.id).Name);
+        setIndicatorName(findIndicatorByCode(indicatorCode).Name);
       }
     };
 
@@ -28,21 +28,33 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
         <h3 className="indicator-name">{indicatorName}</h3>
         <h4 className="indicator-code">{indicatorCode}</h4>
       </div>
-      <div id="years-selector-container">
+      <div id="years-selector-container" className="search-bar-container">
         {/*Contenedor de filtros de fechas*/}
-      <div className="searchBar searchBar-year" id='searchBarContainer-year-from'>
+        <div
+          className="searchBar searchBar-year"
+          id="searchBarContainer-year-from"
+        >
           <h3>Desde</h3>
-          <SearchBar filter='year-from'/>
+          <SearchBar filter="year-from" />
         </div>
-        <div className="searchBar searchBar-year" id='searchBarContainer-year-to'>
+        <div
+          className="searchBar searchBar-year"
+          id="searchBarContainer-year-to"
+        >
           <h3>Hasta</h3>
-          <SearchBar filter='year-to'/>
+          <SearchBar filter="year-to" />
         </div>
       </div>
       {/*El gráfico*/}
-      <div>
-        <IndicatorGraphic countryIndicatorData={countryIndicatorData} />
-      </div>
+      {from > to ? (
+        <div>
+          <p>Introduzca un rango de fechas válido</p>
+        </div>
+      ) : (
+        <div>
+          <IndicatorGraphic countryIndicatorData={countryIndicatorData} />
+        </div>
+      )}
     </>
   );
 };

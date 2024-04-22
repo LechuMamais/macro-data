@@ -192,6 +192,12 @@ input[type="text"]:focus {
   #FilteredIndicatorsList{
     top: 208px;
   }
+  #FilteredFromYearsList{
+    top: 376px;
+  }
+  #FilteredToYearsList{
+      top: 376px;
+  }
 
   #countryName{
     font-size: 24px;
@@ -212,6 +218,12 @@ input[type="text"]:focus {
   #FilteredIndicatorsList{
     top: 233px;
   }
+  #FilteredFromYearsList{
+    top: 368px;
+  }
+  #FilteredToYearsList{
+      top: 368px;
+  }
 
   #countryName{
     font-size: 21px;
@@ -221,5 +233,23 @@ input[type="text"]:focus {
   }
   .indicator-code{
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  #FilteredFromYearsList{
+    top: 393px;
+  }
+  #FilteredToYearsList{
+      top: 393px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #FilteredFromYearsList{
+    top: 410px;
+  }
+  #FilteredToYearsList{
+      top: 410px;
   }
 }

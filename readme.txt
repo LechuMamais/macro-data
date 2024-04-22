@@ -41,5 +41,7 @@ Futuras Mejoras:
         - Que el enrutador aceote y maneje year-from y year-topics - DONE
         - Que las barras de busqueda acepten years y los manejen correctamente, incluyendolos en la URL - DONE
         - Que el gráfico acepte y maneje correctamente las dos variables de tiempo
+            Esto incluye modificar los filtered del year-to para que acepte solo vaores mayores a year-from - DONE
         - Incluir las barras de busqueda en alguna parte de la web - DONE
-        - Adaptar SearchBar para que tenga estilos propios
+        - Adaptar SearchBar para que tenga estilos propios - DONE
+        - Cambiarle la ubicación, para que FilteredList se vea bien siempre, independientemente del largo del texto de country e indicator
