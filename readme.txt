@@ -37,7 +37,7 @@ Futuras Mejoras:
         - Chequear que no haya errores en uso normal de la aplicación.
         - No mostrar la pag vacía al ingresar. => Automáticamente se muestra el PBI de España. Done
         - SearchBar: Mejorar la legibilidad del código
-                     Recoger parámetros con object destructuring
+                     Recoger parámetros con object destructuring. Done
 
     Cositas para mejorar los graficos:
         Mejorar lo del setTimeout, que se tarde un tiki en mover la linea

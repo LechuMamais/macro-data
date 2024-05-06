@@ -11,7 +11,7 @@ import {
 } from "../../../utils/codesHandler";
 
 // acepta 'country' 'indicator' 'year-from' y 'year-to'
-export const SearchBar = (filter) => {
+export const SearchBar = ({filter}) => {
   // Definimos las variables que necesitamos
   const [filterName, setFilterName] = useState("");
   const [filteredFilters, setFilteredFilters] = useState([]);
@@ -42,36 +42,36 @@ export const SearchBar = (filter) => {
 
   useEffect(() => {
     if (countryIso3Code && indicatorCode) {
-      if (filter.filter == "country") {
+      if (filter == "country") {
         // Si por params están los codigos de paises e indicadores, buscar su Name y mustrarlo en los input
         setFilterName(findCountryByCode(countryIso3Code).Name); // Actualiza el estado con el nombre del país
       }
-      if (filter.filter == "indicator") {
+      if (filter == "indicator") {
         setFilterName(findIndicatorByCode(indicatorCode).Name);
       }
-      if (filter.filter == "year-from") {
+      if (filter == "year-from") {
         setFilterName(from);
       }
-      if (filter.filter == "year-to") {
+      if (filter == "year-to") {
         setFilterName(to);
       }
     }
   }, [countryIso3Code, indicatorCode, from, to]);
 
   const handleInputChange = (e) => {
-    if (filter.filter == "country" || filter.filter == "indicator") {
+    if (filter == "country" || filter == "indicator") {
       const inputText = e.target.value;
       //console.log("inputChange", inputText);
       setFilterName(inputText);
       let filteredFilterNames = [];
 
       // Si se está utilizando para countries, que busque coincidencias en el array de países, si indicadores en el array de indicadores
-      if (filter.filter == "country") {
+      if (filter == "country") {
         filteredFilterNames = countriesData.filter((country) =>
           country.Name.toLowerCase().includes(inputText.toLowerCase())
         );
       }
-      if (filter.filter == "indicator") {
+      if (filter == "indicator") {
         filteredFilterNames = indicatorCodes.filter((indicator) =>
           indicator.Name.toLowerCase().includes(inputText.toLowerCase())
         );
@@ -80,7 +80,7 @@ export const SearchBar = (filter) => {
     }
   };
   useEffect(() => {
-    if (filter.filter === "year-from") {
+    if (filter === "year-from") {
       let filteredFilterNames = [];
       for (let i = 0; i <= 50; i++) {
         const yearToAdd = 1974 + i;
@@ -92,7 +92,7 @@ export const SearchBar = (filter) => {
     }
   }, []);
   useEffect(() => {
-    if (filter.filter === "year-to") {
+    if (filter === "year-to") {
       let filteredFilterNames = [];
       const actualDate = new Date();
       const currentYear = actualDate.getFullYear(); // Obtener el año actual correctamente
@@ -136,15 +136,15 @@ export const SearchBar = (filter) => {
         onClick={handleInputClick}
         onChange={handleInputChange}
         placeholder={
-          filter.filter == "country"
+          filter == "country"
             ? "Seleccionar pais"
-            : filter.filter == "indicator"
+            : filter == "indicator"
             ? "Seleccionar indicador"
             : ""
         }
-        id={filter.filter + "SearchInput"}
+        id={filter + "SearchInput"}
         lens={
-          filter.filter == "country" || filter.filter == "indicator"
+          filter == "country" || filter == "indicator"
             ? true
             : false
         }
@@ -156,17 +156,17 @@ export const SearchBar = (filter) => {
               listContent={filteredFilters}
               onClick={handleFilterClick}
               id={
-                filter.filter == "country"
+                filter == "country"
                   ? "FilteredCountriesList"
-                  : filter.filter == "indicator"
+                  : filter == "indicator"
                   ? "FilteredIndicatorsList"
-                  :filter.filter == "year-from"
+                  :filter == "year-from"
                   ? "FilteredFromYearsList"
-                  :filter.filter == "year-to"
+                  :filter == "year-to"
                   ? "FilteredToYearsList"
                   : ""
               }
-              searchParam={filter.filter}
+              searchParam={filter}
             />
           )}
         </div>
