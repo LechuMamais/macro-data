@@ -2,7 +2,6 @@
 export const getIndicatorData = async (countryCode, indicatorCode) => {
   const baseUrl = "https://api.worldbank.org/v2/country";
   const url = `${baseUrl}/${countryCode}/indicator/${indicatorCode}?format=json`;
-
   try {
     const response = await fetch(url);
     if (!response.ok) {

@@ -20,7 +20,7 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
     };
 
     getIndicatorDetails(); // Llamar a la función dentro del useEffect
-  }, [countryIso3Code, indicatorCode, countryIndicatorData]); // Ejecutar useEffect cuando countryIndicatorData cambie
+  }, [countryIso3Code, indicatorCode, countryIndicatorData]);
 
   return (
     <>

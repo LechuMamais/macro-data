@@ -32,6 +32,13 @@ Hecho:
 
 Futuras Mejoras:
 
+    Correcciones de Santi:
+        - Merge a la rama principal
+        - Chequear que no haya errores en uso normal de la aplicación.
+        - No mostrar la pag vacía al ingresar. => Automáticamente se muestra el PBI de España. Done
+        - SearchBar: Mejorar la legibilidad del código
+                     Recoger parámetros con object destructuring
+
     Cositas para mejorar los graficos:
         Mejorar lo del setTimeout, que se tarde un tiki en mover la linea
         Quitar ceros cuando son muchos miles, millones, etc...

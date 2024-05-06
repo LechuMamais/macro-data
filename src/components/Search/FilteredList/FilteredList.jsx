@@ -8,7 +8,7 @@ import React from "react";
 const FilteredList = ({ listContent, onClick, id, searchParam }) => {
   const { countryIso3Code, indicatorCode, from, to } = useParams();
 
-  console.log("FilteredList Mostrado")
+  // console.log("FilteredList Mostrado")
   return (
     <ul className="select-list" id={id}>
       {listContent.map((listItem) => (

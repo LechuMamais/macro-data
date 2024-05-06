@@ -29,6 +29,7 @@ const IndicatorGraphic = ({ countryIndicatorData }) => {
 
   // Efecto de validación
   useEffect(() => {
+    console.log(countryIndicatorData);
     if (
       !countryIndicatorData ||
       !Array.isArray(countryIndicatorData[1]) ||

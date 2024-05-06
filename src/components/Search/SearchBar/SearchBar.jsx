@@ -10,7 +10,7 @@ import {
   findCountryByCode,
 } from "../../../utils/codesHandler";
 
-// acepta 'country' o 'indicator'
+// acepta 'country' 'indicator' 'year-from' y 'year-to'
 export const SearchBar = (filter) => {
   // Definimos las variables que necesitamos
   const [filterName, setFilterName] = useState("");

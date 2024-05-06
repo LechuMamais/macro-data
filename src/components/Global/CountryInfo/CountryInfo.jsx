@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { getIndicatorData } from "../../../services/getIndicatorData";
 import IndicatorDataContainer from "../IndicatorDataContainer/IndicatorDataContainer";
 import { findCountryByCode } from "../../../utils/codesHandler";
-import { SearchBar } from "../../Search/SearchBar/SearchBar";
 
 const CountryInfo = () => {
   const { countryIso3Code, indicatorCode, from, to } = useParams();
