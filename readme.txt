@@ -35,9 +35,16 @@ Futuras Mejoras:
     Correcciones de Santi:
         - Merge a la rama principal
         - Chequear que no haya errores en uso normal de la aplicación.
+            Encontré el error. Al introducir un año from mayor a year-to muestra un error. Luego, al cambiar year-to por uno ok da error.
+            '-> Fixed
         - No mostrar la pag vacía al ingresar. => Automáticamente se muestra el PBI de España. Done
-        - SearchBar: Mejorar la legibilidad del código
+        - SearchBar: Mejorar la legibilidad del código. He creado una carpeta functions donde he puesto algunas funciones que se utilizan
+                        en el componente. Así el código está más ordenado y limpio.
                      Recoger parámetros con object destructuring. Done
+
+Mini bug:
+    - Qué pasa con el alto de las barras cuando year-to == year-from   ???
+
 
     Cositas para mejorar los graficos:
         Mejorar lo del setTimeout, que se tarde un tiki en mover la linea
