@@ -33,7 +33,7 @@ Hecho:
 Futuras Mejoras:
 
     Correcciones de Santi:
-        - Merge a la rama principal
+        - Merge a la rama principal. Done
         - Chequear que no haya errores en uso normal de la aplicación.
             Encontré el error. Al introducir un año from mayor a year-to muestra un error. Luego, al cambiar year-to por uno ok da error.
             '-> Fixed
@@ -42,8 +42,11 @@ Futuras Mejoras:
                         en el componente. Así el código está más ordenado y limpio.
                      Recoger parámetros con object destructuring. Done
 
-Mini bug:
-    - Qué pasa con el alto de las barras cuando year-to == year-from   ???
+    - Pequeña correccion de estilos en los input que no tienen lupa. Done
+
+    Mini bug:
+        - Qué pasa con el alto de las barras cuando year-to == year-from   ???
+        - Qué pasa con el alto de las barras cuando se cambia a un indicador que no tiene datos?
 
 
     Cositas para mejorar los graficos:

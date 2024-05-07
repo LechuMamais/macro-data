@@ -9,12 +9,10 @@ import { updateFilteredList } from "../../../functions/updateFilteredList";
 
 // acepta 'country' 'indicator' 'year-from' y 'year-to'
 export const SearchBar = ({ filter }) => {
-  // Definimos las variables que necesitamos
   const [filterName, setFilterName] = useState("");
   const [filteredFilters, setFilteredFilters] = useState([]);
-  // Y recuperamos de los params el codigo de pais y de indicadors
   const { countryIso3Code, indicatorCode, from, to } = useParams();
-  // Este ref es para controlar los clicks, si se clicka fuera de la lista, se desmonta el componente
+  // Este ref es para controlar los clicks, si se clicka fuera de la filteredList, se desmonta el componente
   const searchBarRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
