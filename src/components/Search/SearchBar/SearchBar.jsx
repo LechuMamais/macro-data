@@ -9,15 +9,15 @@ import { updateFilteredList } from "../../../functions/updateFilteredList";
 
 // acepta 'country' 'indicator' 'year-from' y 'year-to'
 export const SearchBar = ({ filter }) => {
+  const { countryIso3Code, indicatorCode, from, to } = useParams();
   const [filterName, setFilterName] = useState("");
   const [filteredFilters, setFilteredFilters] = useState([]);
-  const { countryIso3Code, indicatorCode, from, to } = useParams();
+  const [visible, setVisible] = useState(false);
   // Este ref es para controlar los clicks, si se clicka fuera de la filteredList, se desmonta el componente
   const searchBarRef = useRef(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Damos valor inicial a filterName
+    // Damos valor inicial a filterName, dado por los params
     setFilterName(
       giveFilterDefaultName(filter, countryIso3Code, indicatorCode, from, to)
     );
@@ -59,8 +59,8 @@ export const SearchBar = ({ filter }) => {
 
   const handleInputClick = () => {
     // Queremos que al darle click al input se ponga en blanco, y que además se muestre la lista completa de paises o indicadores
-    setVisible(true); // Mostramos la lista
-    setFilterName(""); // ponemos el valor en vacio
+    setVisible(true);
+    setFilterName("");
     handleInputChange({ target: { value: "" } }); // Para simular que ha cambiado el valor del input a '' Entonces muestra la lista completa
   };
 
@@ -75,6 +75,8 @@ export const SearchBar = ({ filter }) => {
             ? "Seleccionar pais"
             : filter == "indicator"
             ? "Seleccionar indicador"
+            : filter == "year-from" || filter == "year-to"
+            ? "Year"
             : ""
         }
         id={filter + "SearchInput"}
