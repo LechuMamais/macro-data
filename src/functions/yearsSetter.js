@@ -1,6 +1,6 @@
 export const yearsSetter = (filter, from, to) => {
     let filteredFilterNames = [];
-    if (filter == "year-from") {
+    if (filter == "yearFrom") {
         let i = 0;
         let yearToAdd
         do {
@@ -12,7 +12,7 @@ export const yearsSetter = (filter, from, to) => {
         
     }
 
-    if (filter == "year-to") {
+    if (filter == "yearTo") {
         const actualDate = new Date();
         const currentYear = actualDate.getFullYear(); // Obtener el año actual
         const fromYear = parseInt(from);

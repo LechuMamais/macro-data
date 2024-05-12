@@ -15,9 +15,9 @@ export const giveFilterDefaultName = (
             return findCountryByCode(countryIso3Code).Name;
         case "indicator":
             return findIndicatorByCode(indicatorCode).Name;
-        case "year-from":
+        case "yearFrom":
             return from;
-        case "year-to":
+        case "yearTo":
             return to;
         default:
             return "";

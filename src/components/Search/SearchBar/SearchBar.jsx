@@ -6,8 +6,9 @@ import { yearsSetter } from "../../../functions/yearsSetter";
 import { useParams } from "react-router";
 import { giveFilterDefaultName } from "../../../functions/giveFilterDefaultName";
 import { updateFilteredList } from "../../../functions/updateFilteredList";
+import { filterPosibilities } from "../../../utils/filterPosibilities";
 
-// acepta 'country' 'indicator' 'year-from' y 'year-to'
+// acepta 'country' 'indicator' 'yearFrom' y 'yearTo'
 export const SearchBar = ({ filter }) => {
   const { countryIso3Code, indicatorCode, from, to } = useParams();
   const [filterName, setFilterName] = useState("");
@@ -39,7 +40,7 @@ export const SearchBar = ({ filter }) => {
   }, [countryIso3Code, indicatorCode, from, to]);
 
   useEffect(() => {
-    if (filter == "year-from" || filter == "year-to") {
+    if (filter == "yearFom" || filter == "yearTo") {
       setFilteredFilters(yearsSetter(filter, from, to));
     }
   }, [from, to]);
@@ -64,21 +65,14 @@ export const SearchBar = ({ filter }) => {
     handleInputChange({ target: { value: "" } }); // Para simular que ha cambiado el valor del input a '' Entonces muestra la lista completa
   };
 
+
   return (
     <div>
       <SearchLabel
         value={filterName}
         onClick={handleInputClick}
         onChange={handleInputChange}
-        placeholder={
-          filter == "country"
-            ? "Seleccionar pais"
-            : filter == "indicator"
-            ? "Seleccionar indicador"
-            : filter == "year-from" || filter == "year-to"
-            ? "Year"
-            : ""
-        }
+        placeholder={filterPosibilities[filter].placeholder || ""}
         id={filter + "SearchInput"}
         lens={filter == "country" || filter == "indicator" ? true : false}
       />
@@ -88,18 +82,8 @@ export const SearchBar = ({ filter }) => {
             <FilteredList
               listContent={filteredFilters}
               onClick={handleFilterClick}
-              id={
-                filter == "country"
-                  ? "FilteredCountriesList"
-                  : filter == "indicator"
-                  ? "FilteredIndicatorsList"
-                  : filter == "year-from"
-                  ? "FilteredFromYearsList"
-                  : filter == "year-to"
-                  ? "FilteredToYearsList"
-                  : ""
-              }
-              searchParam={filter}
+              id={filterPosibilities[filter].filteredListId || ""}
+              filter={filter}
             />
           )}
         </div>

@@ -35,14 +35,14 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
           id="searchBarContainer-year-from"
         >
           <h3>Desde</h3>
-          <SearchBar filter="year-from" />
+          <SearchBar filter="yearFrom" />
         </div>
         <div
           className="searchBar searchBar-year"
           id="searchBarContainer-year-to"
         >
           <h3>Hasta</h3>
-          <SearchBar filter="year-to" />
+          <SearchBar filter="yearTo" />
         </div>
       </div>
       {/*El gráfico*/}
