@@ -3,6 +3,7 @@ import './SearchCountryInfo.css';
 import React from "react";
 import CountryInfo from "../../Global/CountryInfo/CountryInfo";
 import { SearchBar } from '../../Search/SearchBar/SearchBar';
+import { filterPosibilities } from '../../../utils/filterPosibilities';
 
 const SearchCountryInfo = () => {
   return (
@@ -11,22 +12,16 @@ const SearchCountryInfo = () => {
         {/* Selector de paises*/}
         <div className="searchBar" id='searchBarContainer-country'>
           <h3>Selecciona un país</h3>
-          {/*<CountrySearchInput />*/}
-          <SearchBar filter='country'/>
+          <SearchBar filter={filterPosibilities.country}/>
         </div>
-
         {/* Selector de indicadores*/}
         <div className="searchBar" id='searchBarContainer-indicator'>
           <h3>Selecciona un indicador</h3>
           {/*<IndicatorSearchInput/>*/}
-          <SearchBar filter='indicator'/>
+          <SearchBar filter={filterPosibilities.indicator}/>
         </div>
       </div>
-
-      {/* Renderizar CountryInfo  */}
-
-        <CountryInfo/>
-
+      <CountryInfo/>
     </div>
   );
 };

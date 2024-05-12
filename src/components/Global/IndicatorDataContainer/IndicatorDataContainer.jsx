@@ -5,6 +5,7 @@ import IndicatorGraphic from "../../Graphic/IndicatorGraphic/IndicatorGraphic";
 import { findIndicatorByCode } from "../../../utils/codesHandler";
 import { useParams } from "react-router";
 import { SearchBar } from "../../Search/SearchBar/SearchBar";
+import { filterPosibilities } from "../../../utils/filterPosibilities";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {
   const { countryIso3Code, indicatorCode, from, to } = useParams();
@@ -35,23 +36,23 @@ const IndicatorDataContainer = ({ countryIndicatorData }) => {
           id="searchBarContainer-year-from"
         >
           <h3>Desde</h3>
-          <SearchBar filter="yearFrom" />
+          <SearchBar filter={filterPosibilities.yearFrom} />
         </div>
         <div
           className="searchBar searchBar-year"
           id="searchBarContainer-year-to"
         >
           <h3>Hasta</h3>
-          <SearchBar filter="yearTo" />
+          <SearchBar filter={filterPosibilities.yearTo} />
         </div>
       </div>
-      {/*El gráfico*/}
       {from > to ? (
         <div>
           <p>Introduzca un rango de fechas válido</p>
         </div>
       ) : (
         <div>
+          {/*El gráfico*/}
           <IndicatorGraphic countryIndicatorData={countryIndicatorData} />
         </div>
       )}

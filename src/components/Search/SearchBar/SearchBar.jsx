@@ -2,11 +2,8 @@ import "./SearchBar.css";
 import React, { useEffect, useRef, useState } from "react";
 import SearchLabel from "../SearchLabel/SearchLabel";
 import FilteredList from "../FilteredList/FilteredList";
-import { yearsSetter } from "../../../functions/yearsSetter";
 import { useParams } from "react-router";
 import { giveFilterDefaultName } from "../../../functions/giveFilterDefaultName";
-import { updateFilteredList } from "../../../functions/updateFilteredList";
-import { filterPosibilities } from "../../../utils/filterPosibilities";
 
 // acepta 'country' 'indicator' 'yearFrom' y 'yearTo'
 export const SearchBar = ({ filter }) => {
@@ -17,10 +14,19 @@ export const SearchBar = ({ filter }) => {
   // Este ref es para controlar los clicks, si se clicka fuera de la filteredList, se desmonta el componente
   const searchBarRef = useRef(null);
 
+  const {
+    placeholder,
+    text,
+    type,
+    filteredListId,
+    lens,
+    filteredFiltersListCreator,
+  } = filter;
+
   useEffect(() => {
     // Damos valor inicial a filterName, dado por los params
     setFilterName(
-      giveFilterDefaultName(filter, countryIso3Code, indicatorCode, from, to)
+      giveFilterDefaultName(text, countryIso3Code, indicatorCode, from, to)
     );
 
     // Función para desmontar el componente FilteredList al hacer clic fuera del componente
@@ -29,7 +35,7 @@ export const SearchBar = ({ filter }) => {
         setVisible(false);
       }
       setFilterName(
-        giveFilterDefaultName(filter, countryIso3Code, indicatorCode, from, to)
+        giveFilterDefaultName(text, countryIso3Code, indicatorCode, from, to)
       );
     };
 
@@ -40,20 +46,20 @@ export const SearchBar = ({ filter }) => {
   }, [countryIso3Code, indicatorCode, from, to]);
 
   useEffect(() => {
-    if (filter == "yearFom" || filter == "yearTo") {
-      setFilteredFilters(yearsSetter(filter, from, to));
+    if (type === "year") {
+      setFilteredFilters(filteredFiltersListCreator(text, from, to));
     }
   }, [from, to]);
 
   const handleInputChange = (e) => {
-    if (filter == "country" || filter == "indicator") {
+    if (type == "string") {
       const inputText = e.target.value;
       setFilterName(inputText);
-      setFilteredFilters(updateFilteredList(filter, inputText));
+      setFilteredFilters(filteredFiltersListCreator(text, inputText));
     }
   };
 
-  const handleFilterClick = (filter) => {
+  const handleFilterClick = (text) => {
     setFilterName(filter.Name);
     setVisible(false);
   };
@@ -65,25 +71,24 @@ export const SearchBar = ({ filter }) => {
     handleInputChange({ target: { value: "" } }); // Para simular que ha cambiado el valor del input a '' Entonces muestra la lista completa
   };
 
-
   return (
     <div>
       <SearchLabel
         value={filterName}
         onClick={handleInputClick}
         onChange={handleInputChange}
-        placeholder={filterPosibilities[filter].placeholder || ""}
-        id={filter + "SearchInput"}
-        lens={filter == "country" || filter == "indicator" ? true : false}
+        placeholder={placeholder || ""}
+        id={text + "SearchInput"}
+        lens={lens || false}
       />
-      {filteredFilters.length > 0 && (
+      {filteredFilters && filteredFilters.length > 0 && (
         <div ref={searchBarRef}>
           {visible && (
             <FilteredList
               listContent={filteredFilters}
               onClick={handleFilterClick}
-              id={filterPosibilities[filter].filteredListId || ""}
-              filter={filter}
+              id={filteredListId || ""}
+              filter={text}
             />
           )}
         </div>

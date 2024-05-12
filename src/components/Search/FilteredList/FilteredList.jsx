@@ -7,8 +7,6 @@ const FilteredList = ({ listContent, onClick, id, filter }) => {
   // Desestructurar los parámetros de la URL
   const { countryIso3Code, indicatorCode, from, to } = useParams();
 
-  //console.log("FilteredList", listContent, onClick, id, filter, countryIso3Code, indicatorCode, from, to)
-
   return (
     <ul className="select-list" id={id}>
       {listContent.map((listItem) => (

@@ -1,27 +1,42 @@
+import { updateFilteredList } from "../functions/updateFilteredList";
+import { yearsSetter } from "../functions/yearsSetter";
+
 export const filterPosibilities = {
   country: {
-    placeholder: "Seleccionar pais",
     text: "country",
+    type: "string",
+    placeholder: "Seleccionar pais",
     filteredListId: "FilteredCountriesList",
     defaultValue: "ES",
+    lens: true,
+    filteredFiltersListCreator: (text, inputText)=>{ return updateFilteredList(text, inputText)}
   },
   indicator: {
-    placeholder: "Seleccionar indicador",
     text: "indicator",
+    type: "string",
+    placeholder: "Seleccionar indicador",
     filteredListId: "FilteredIndicatorsList",
     defaultValue: "NY.GDP.MKTP.CD",
+    lens: true,
+    filteredFiltersListCreator: (text, inputText)=>{ return updateFilteredList(text, inputText)}
   },
   yearFrom: {
-    placeholder: "Year",
     text: "yearFrom",
+    type: "year",
+    placeholder: "Year",
     filteredListId: "FilteredFromYearsList",
     defaultValue: "1974",
+    lens: false,
+    filteredFiltersListCreator: (text, from, to)=>{return yearsSetter(text, from, to)},
   },
   yearTo: {
-    placeholder: "Year",
     text: "yearTo",
+    type: "year",
+    placeholder: "Year",
     filteredListId: "FilteredToYearsList",
     defaultValue: "2024",
+    lens: false,
+    filteredFiltersListCreator: (text, from, to)=>{return yearsSetter(text, from, to)}
   },
 };
 

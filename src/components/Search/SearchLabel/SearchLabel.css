@@ -27,7 +27,7 @@
   border: none;
 }
 
-.year-fromSearchInput-container,
-.year-toSearchInput-container{
+.yearFromSearchInput-container,
+.yearToSearchInput-container{
   width: 120px;
 }
