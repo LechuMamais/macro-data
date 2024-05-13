@@ -1,0 +1,74 @@
+.searchBar{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+    position: relative;
+}
+.searchBar h3{
+    font-weight: 400;
+    font-size: 17px;
+}
+
+/*Search Label*/
+.search-input-container {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 ;
+  }
+  .search-input-container svg{
+    padding: 0 0 0 0.7rem;
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  
+  .search-input-container input {
+    font-size: 14px;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .search-input-container input:focus {
+    border: none;
+  }
+  
+  .yearFromSearchInput-container,
+  .yearToSearchInput-container{
+    width: 120px;
+  }
+
+
+/*FilteredLists*/
+.select-list{
+    width: 300px;
+    position: absolute;
+    top: calc(100% + 0.25rem) !important;
+    max-height: calc(80vh - 340px);
+    overflow-y: scroll;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: rgba(245, 245, 245, 0.886);
+    border: 3px solid rgba(205, 205, 205, 0.354);
+    z-index: 100;
+}
+
+.country-name-li{
+    cursor: pointer;
+    padding: 0.2rem 0.5rem ;
+    transition: all 320ms ease-in-out;
+}
+.country-name-li:hover{
+    background-color: rgb(207, 207, 207);
+}
+#FilteredFromYearsList, 
+#FilteredToYearsList{
+    width: 150px;
+}

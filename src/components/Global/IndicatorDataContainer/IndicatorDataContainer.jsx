@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import IndicatorGraphic from "../../Graphic/IndicatorGraphic/IndicatorGraphic";
 import { findIndicatorByCode } from "../../../utils/codesHandler";
 import { useParams } from "react-router";
-import { SearchBar } from "../../Search/SearchBar/SearchBar";
+import { SearchBar } from "../SearchBar/SearchBar";
 import { filterPosibilities } from "../../../utils/filterPosibilities";
 
 const IndicatorDataContainer = ({ countryIndicatorData }) => {

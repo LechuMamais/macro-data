@@ -2,7 +2,7 @@ import './SearchCountryInfo.css';
 
 import React from "react";
 import CountryInfo from "../../Global/CountryInfo/CountryInfo";
-import { SearchBar } from '../../Search/SearchBar/SearchBar';
+import { SearchBar } from '../SearchBar/SearchBar';
 import { filterPosibilities } from '../../../utils/filterPosibilities';
 
 const SearchCountryInfo = () => {

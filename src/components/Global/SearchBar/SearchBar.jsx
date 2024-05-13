@@ -1,9 +1,9 @@
 import "./SearchBar.css";
 import React, { useEffect, useRef, useState } from "react";
-import SearchLabel from "../SearchLabel/SearchLabel";
-import FilteredList from "../FilteredList/FilteredList";
 import { useParams } from "react-router";
 import { giveFilterDefaultName } from "../../../functions/giveFilterDefaultName";
+import { Link } from "react-router-dom";
+import { filteredListUrlsGenerator } from "../../../functions/filteredListsUrlsGenerator";
 
 // acepta objetos definidos en utils/filterPosibilities.js
 export const SearchBar = ({ filter }) => {
@@ -66,25 +66,60 @@ export const SearchBar = ({ filter }) => {
     handleInputChange({ target: { value: "" } }); // Para simular que ha cambiado el valor del input a '' Entonces muestra la lista completa
   };
 
+  // Referencia para el input
+  const inputRef = useRef(null);
+
   return (
     <div>
-      <SearchLabel
-        value={filterName}
+      <div
+        className={text + "SearchInput" + "-container search-input-container"}
         onClick={handleInputClick}
-        onChange={handleInputChange}
-        placeholder={placeholder || ""}
-        id={text + "SearchInput"}
-        lens={lens || false}
-      />
+      >
+        {lens && (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+          </svg>
+        )}
+        <input
+          ref={inputRef} // Asignar la referencia al input
+          id={text + "SearchInput"}
+          type="text"
+          value={filterName}
+          onChange={handleInputChange}
+          placeholder={placeholder || ""}
+          required
+        />
+      </div>
+      
       {filteredFilters && filteredFilters.length > 0 && (
         <div ref={searchBarRef}>
           {visible && (
-            <FilteredList
-              listContent={filteredFilters}
-              onClick={()=>setVisible(false)}
-              id={filteredListId || ""}
-              filter={text}
-            />
+            <ul className="select-list" id={filteredListId || ""}>
+              {filteredFilters.map((listItem) => (
+                <Link
+                  to={filteredListUrlsGenerator(
+                    text,
+                    listItem,
+                    countryIso3Code,
+                    indicatorCode,
+                    from,
+                    to
+                  )}
+                  key={listItem.Code || listItem}
+                  onClick={() => setVisible(false)}
+                  className="custom-link"
+                >
+                  <li className="country-name-li">
+                    {listItem.Name || listItem}
+                  </li>
+                </Link>
+              ))}
+            </ul>
           )}
         </div>
       )}
