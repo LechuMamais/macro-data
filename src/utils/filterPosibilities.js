@@ -22,7 +22,7 @@ export const filterPosibilities = {
   },
   yearFrom: {
     text: "yearFrom",
-    type: "year",
+    type: "number",
     placeholder: "Year",
     filteredListId: "FilteredFromYearsList",
     defaultValue: "1974",
@@ -31,7 +31,7 @@ export const filterPosibilities = {
   },
   yearTo: {
     text: "yearTo",
-    type: "year",
+    type: "number",
     placeholder: "Year",
     filteredListId: "FilteredToYearsList",
     defaultValue: "2024",

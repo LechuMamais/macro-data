@@ -5,7 +5,7 @@ import FilteredList from "../FilteredList/FilteredList";
 import { useParams } from "react-router";
 import { giveFilterDefaultName } from "../../../functions/giveFilterDefaultName";
 
-// acepta 'country' 'indicator' 'yearFrom' y 'yearTo'
+// acepta objetos definidos en utils/filterPosibilities.js
 export const SearchBar = ({ filter }) => {
   const { countryIso3Code, indicatorCode, from, to } = useParams();
   const [filterName, setFilterName] = useState("");
@@ -46,7 +46,7 @@ export const SearchBar = ({ filter }) => {
   }, [countryIso3Code, indicatorCode, from, to]);
 
   useEffect(() => {
-    if (type === "year") {
+    if (type === "number") {
       setFilteredFilters(filteredFiltersListCreator(from, to));
     }
   }, [from, to]);
@@ -57,11 +57,6 @@ export const SearchBar = ({ filter }) => {
       setFilterName(inputText);
       setFilteredFilters(filteredFiltersListCreator(text, inputText));
     }
-  };
-
-  const handleFilterClick = (text) => {
-    setFilterName(filter.Name);
-    setVisible(false);
   };
 
   const handleInputClick = () => {
@@ -86,7 +81,7 @@ export const SearchBar = ({ filter }) => {
           {visible && (
             <FilteredList
               listContent={filteredFilters}
-              onClick={handleFilterClick}
+              onClick={()=>setVisible(false)}
               id={filteredListId || ""}
               filter={text}
             />
