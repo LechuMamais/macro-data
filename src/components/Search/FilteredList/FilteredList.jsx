@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./FilteredList.css";
-import { filteredListUrlsGenerator } from "../../../utils/filterPosibilities";
+import { filteredListUrlsGenerator } from "../../../functions/filteredListsUrlsGenerator";
 
 const FilteredList = ({ listContent, onClick, id, filter }) => {
   // Desestructurar los parámetros de la URL

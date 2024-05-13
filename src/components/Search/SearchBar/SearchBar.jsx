@@ -55,7 +55,7 @@ export const SearchBar = ({ filter }) => {
     if (type == "string") {
       const inputText = e.target.value;
       setFilterName(inputText);
-      setFilteredFilters(filteredFiltersListCreator(text, inputText));
+      setFilteredFilters(filteredFiltersListCreator(inputText));
     }
   };
 
