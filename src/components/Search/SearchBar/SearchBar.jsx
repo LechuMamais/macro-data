@@ -47,7 +47,7 @@ export const SearchBar = ({ filter }) => {
 
   useEffect(() => {
     if (type === "year") {
-      setFilteredFilters(filteredFiltersListCreator(text, from, to));
+      setFilteredFilters(filteredFiltersListCreator(from, to));
     }
   }, [from, to]);
 
